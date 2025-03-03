@@ -66,13 +66,13 @@
     <img id="camera" src="" width="500" height="300" alt="監視器畫面"/>
 
     <!-- 切換機台 -->
-    <button onclick="prevMachine()">⬆ 上一台</button>
-    <button onclick="nextMachine()">⬇ 下一台</button>
+    <button onclick="prevMachine()">⬆ 上一台　⬆</button>
+    <button onclick="nextMachine()">⬇ 下一台　⬇</button>
 
     <!-- 新增場地 / 機台 -->
     <br><br>
-    <a href="VisitorCounterServlet?page=addLocation.jsp">➕ 新增場地</a> |
-    <a href="VisitorCounterServlet?page=addMachine.jsp">➕ 新增機台</a>
+    <a href="VisitorCounterServlet?page=register/addLocation.jsp">➕ 新增場地</a> |
+    <a href="VisitorCounterServlet?page=register/addMachine.jsp">➕ 新增機台</a>
 
 </body>
 </html>
