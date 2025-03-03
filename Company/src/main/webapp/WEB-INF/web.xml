@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>Company</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+   <!-- 新增filter物件  -->
+  <filter>
+  		<filter-name>EncodeFilter</filter-name><!-- 宣告名稱 filter.EncodeFilter  EncodeFilter -->
+  		<filter-class>filter.EncodeFilter</filter-class><!-- new filter.EncodeFilter() --> 
+  </filter>
+  
+  <filter-mapping>
+  		<filter-name>EncodeFilter</filter-name>
+  		<url-pattern>/*</url-pattern> <!-- /*指8080port底下所有網頁 -->
+  </filter-mapping>
+  
+  <filter>
+  		<filter-name>LoginFilter</filter-name>
+  		<filter-class>filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  		<filter-name>LoginFilter</filter-name>
+  		<url-pattern>/register/*</url-pattern>
+  </filter-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>VisitorCounterServlet?page=index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

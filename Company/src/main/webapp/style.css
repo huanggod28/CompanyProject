@@ -1,0 +1,16 @@
+@charset "UTF-8";
+body{
+	background-image: url(/pic/background.jpg);
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+#mid{
+	width:50%;
+	background-color:#00B0F0;
+	height:600px;
+	margin-left:25%;
+	color:white;
+	text-align:center;
+}
