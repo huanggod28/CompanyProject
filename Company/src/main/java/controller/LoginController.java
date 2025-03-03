@@ -30,8 +30,8 @@ public class LoginController extends HttpServlet {
 
         if (sessionCaptcha != null && sessionCaptcha.equalsIgnoreCase(captcha)) {
             if (register != null) { // 帳號密碼正確
-            	
-                session.setAttribute("Register", register);
+            	session.setAttribute("Register", register);
+            	session.setAttribute("id", register.getId());
                 session.setAttribute("name", register.getName()); // 存入 name
                 session.setAttribute("username", username);
                 session.setAttribute("phone", register.getPhone());

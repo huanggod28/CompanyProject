@@ -53,7 +53,7 @@
         <select id="location" name="location" onchange="loadMachines(this.value)">
             <option value="">請選擇場地</option>
             <% 
-                List<Location> locations = new LocationDaoImpl().getLocationsByUserId((Integer) session.getAttribute("userId"));
+                List<Location> locations = new LocationDaoImpl().getLocationsByUserId((Integer) session.getAttribute("id"));
                 for (Location loc : locations) {
             %>
                 <option value="<%= loc.getId() %>"><%= loc.getName() %></option>
@@ -71,8 +71,8 @@
 
     <!-- 新增場地 / 機台 -->
     <br><br>
-    <a href="addLocation.jsp">➕ 新增場地</a> |
-    <a href="addMachine.jsp">➕ 新增機台</a>
+    <a href="VisitorCounterServlet?page=addLocation.jsp">➕ 新增場地</a> |
+    <a href="VisitorCounterServlet?page=addMachine.jsp">➕ 新增機台</a>
 
 </body>
 </html>

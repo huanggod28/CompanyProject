@@ -7,6 +7,6 @@
 <title>錯誤</title>
 </head>
 <body>
-<a href="index.jsp"><h3>請先登入</h3></a>
+<a href="VisitorCounterServlet?page=index.jsp"><h3>請先登入</h3></a>
 </body>
 </html>
