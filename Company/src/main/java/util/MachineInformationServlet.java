@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import dao.LocationDao;
 import dao.impl.LocationDaoImpl;
 import model.Location;
+import model.Register; // 確保有引入 Register 類別
 
 @WebServlet("/MachineInformationServlet")
 public class MachineInformationServlet extends HttpServlet {
@@ -20,19 +21,23 @@ public class MachineInformationServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Integer userId = (Integer) session.getAttribute("userId");  // 確保 session 中有 userId
+        
+        // 取得登入的 Register 物件
+        Register register = (Register) session.getAttribute("Register");
 
-        if (userId != null) {
+        if (register != null) {
+            Integer userId = register.getId(); // 取得 userId
+
             // 使用 DAO 獲取該用戶的所有場地
             LocationDao locationDao = new LocationDaoImpl();
             List<Location> locations = locationDao.getLocationsByUserId(userId);
 
             // 傳遞場地資料到 JSP
             request.setAttribute("locations", locations);
-            request.getRequestDispatcher("machineInformation.jsp").forward(request, response);
+            request.getRequestDispatcher("VisitorCounterServlet?page=register/machineInformation.jsp").forward(request, response);
         } else {
-            // 如果 session 中沒有 userId，重定向至登入頁面
-            response.sendRedirect("login.jsp");
+            // 如果 session 中沒有登入資訊，重定向至登入頁面
+            response.sendRedirect("VisitorCounterServlet?page=login.jsp");
         }
     }
 }

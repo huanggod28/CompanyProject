@@ -12,12 +12,12 @@ public class MachineDaoImpl implements MachineDao {
     private static Connection conn = DbConnection.getDB();  // 直接取得資料庫連線
 
     @Override
-    public List<Machine> getMachinesByLocationId(int locationId) {
+    public List<Machine> getMachinesByLocationId(int id) {
         List<Machine> machines = new ArrayList<>();
         String sql = "SELECT * FROM Machines WHERE location_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, locationId);
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -25,7 +25,8 @@ public class MachineDaoImpl implements MachineDao {
                     rs.getInt("id"),
                     rs.getInt("location_id"),
                     rs.getString("name"),
-                    rs.getString("camera_url")
+                    rs.getString("camera_url"),
+                    rs.getString("image_url")
                 );
                 machines.add(machine);
             }
@@ -47,5 +48,21 @@ public class MachineDaoImpl implements MachineDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public int getMachineCountByLocation(int locationId) {
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM Machines WHERE location_id = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, locationId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 }

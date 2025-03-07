@@ -12,12 +12,12 @@ public class LocationDaoImpl implements LocationDao {
     private static Connection conn = DbConnection.getDB();  // 直接取得資料庫連線
 
     @Override
-    public List<Location> getLocationsByUserId(int userId) {
+    public List<Location> getLocationsByUserId(int id) {
         List<Location> locations = new ArrayList<>();
         String sql = "SELECT * FROM Locations WHERE user_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, userId);
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
