@@ -25,7 +25,9 @@ public class VisitorCounterServlet extends HttpServlet {
         }
 
         // 受保護的頁面（需要登入）
-        String[] protectedPages = {"register/about.jsp", "register/loginSuccess.jsp", "register/machineInformation.jsp","register/profile.jsp"};
+        String[] protectedPages = {"register/aboutMe.jsp","register/chat.jsp","register/addLocation.jsp",
+        		"register/addMachine.jsp", "register/loginSuccess.jsp", "register/machineInformation.jsp",
+        		"register/profile.jsp","game/gameIndex.jsp","game/game.jsp"};
         boolean needsLogin = false;
         for (String page : protectedPages) {
             if (targetPage.equals(page)) {

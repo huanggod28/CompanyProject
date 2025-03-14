@@ -18,31 +18,40 @@ public class MachineServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String locationIdStr = request.getParameter("locationId");
+        System.out.println("📌 收到請求: locationId = " + locationIdStr); // Debug
 
         if (locationIdStr == null || locationIdStr.isEmpty()) {
+            System.out.println("❌ 缺少 locationId");
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "缺少 locationId");
             return;
         }
 
         try {
             int locationId = Integer.parseInt(locationIdStr);
+            System.out.println("📡 查詢機台資料，locationId: " + locationId);
+            
             MachineDaoImpl machineDao = new MachineDaoImpl();
             List<Machine> machines = machineDao.getMachinesByLocationId(locationId);
 
-            // **設定回傳格式**
+            if (machines.isEmpty()) {
+                System.out.println("⚠️ 此場地沒有機台");
+            } else {
+                for (Machine m : machines) {
+                    System.out.println("✅ 找到機台: " + m.getName() + "，imageUrl: " + m.getImageUrl());
+                }
+            }
+
             response.setContentType("application/json; charset=UTF-8");
             PrintWriter out = response.getWriter();
-            
-            // **使用 Gson 轉換 JSON**
             Gson gson = new Gson();
-            String jsonResponse = gson.toJson(machines);
-
-            out.print(jsonResponse);
+            out.print(gson.toJson(machines));
             out.flush();
         } catch (NumberFormatException e) {
+            System.out.println("❌ locationId 格式錯誤: " + locationIdStr);
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "locationId 必須是數字");
         } catch (Exception e) {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "伺服器發生錯誤: " + e.getMessage());
+            System.out.println("❌ 伺服器發生錯誤: " + e.getMessage());
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "伺服器發生錯誤");
         }
     }
 }

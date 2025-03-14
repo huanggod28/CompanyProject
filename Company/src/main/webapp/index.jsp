@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>智能娃娃機營運監控系統</title>
+<link rel="icon" href="http://huanggod.myddns.me:8080/Company/pic/icon.ico" type="image/x-icon">
 <link type="text/css" rel="stylesheet" href="style.css">
 <style>
 body{

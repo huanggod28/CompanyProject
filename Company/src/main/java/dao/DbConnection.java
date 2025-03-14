@@ -32,5 +32,15 @@ public class DbConnection {
 			}
 		return conn;
 	}
-
+	
+	public static boolean isConnectionValid(Connection connection) {
+        try {
+            if (connection != null && !connection.isClosed()) {
+                return true; // 連接有效
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // 連接無效
+    }
 }

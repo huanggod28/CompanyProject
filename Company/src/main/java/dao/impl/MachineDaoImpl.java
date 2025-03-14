@@ -38,12 +38,13 @@ public class MachineDaoImpl implements MachineDao {
 
     @Override
     public void addMachine(Machine machine) {
-        String sql = "INSERT INTO Machines (location_id, name, camera_url) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Machines (location_id, name, camera_url,image_url) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, machine.getLocationId());
             stmt.setString(2, machine.getName());
             stmt.setString(3, machine.getCameraUrl());
+            stmt.setString(4, machine.getImageUrl());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

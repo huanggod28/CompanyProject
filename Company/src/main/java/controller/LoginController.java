@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +39,9 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("email", register.getEmail());
                 session.setAttribute("genger", register.getGenger());
                 session.setAttribute("address", register.getAddress());
-
+                //
+                HttpSession session2 = request.getSession();
+                session2.setAttribute("userId", register.getId());
                 // 登入成功，跳轉到計數 Servlet，然後導向成功頁面
                 response.sendRedirect("VisitorCounterServlet?page=register/loginSuccess.jsp");
             } else {

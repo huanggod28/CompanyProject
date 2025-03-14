@@ -10,107 +10,193 @@
     	visitorCount = 0;
     }
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>智能娃娃機營運監控系統</title>
+<link rel="icon" href="http://huanggod.myddns.me:8080/Company/pic/icon.ico" type="image/x-icon">
 <style>
-body{
-	background-image: url(http://huanggod.myddns.me:8080/Company/pic/bacc01.jpg);
-	background-repeat: no-repeat;
+body {
+    background-image: url('http://huanggod.myddns.me:8080/Company/pic/bacc01.jpg');
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
 }
-#div1 {
-	height: 658px;
-	width: 215px;
-	border-bottom-width: medium;
-	border-bottom-style: double;
-	
+
+.container {
+    display: flex;
+    justify-content: center;
+    padding-top: 0px;
 }
-#div2 {
-	height: 29px;
-	width: 215px;
+
+.main-table {
+    width: 1024px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
-#div3 {
-	font-family: "標楷體";
-	font-size: 24px;
-	color: #0000FF;
-	height: 29px;
-	width: 770px;
+
+.header {
+    text-align: center;
+    background: linear-gradient(to bottom, #D7EAFB, #FFFFFF);
+    padding: 10px 0;
 }
-.s1 {
-	font-family: "標楷體";
-	font-size: 24px;
-	font-weight: 500;
-	color: #D7A0FB;
-	border-bottom-width: medium;
-	border-bottom-style: solid;
-	border-bottom-color: #000;
-	width: 100px;
+
+.header img {
+    width: 1000px;
+    height: auto;
 }
-.s2 {
-	font-size: 16px;
-	color: #000000;
-	background-image: url(http://huanggod.myddns.me:8080/Company/pic/menu1.png);
-	line-height: 30px;
-	height: 30px;
-	background-repeat: no-repeat;
+
+.sidebar {
+    width: 220px;
+    background: linear-gradient(to bottom, #D7EAFB, #FFFFFF);
+    padding: 15px;
+    text-align: center;
 }
-table{
-	border-collapse:collapse;
+
+.sidebar .title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0056b3;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 5px;
 }
-#div1 table tr td .s2:hover {
-	background-image: url("http://huanggod.myddns.me:8080/Company/pic/menu2.png);
-	background-repeat: no-repeat;
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 10px 0;
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    background: #007BFF;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.menu a:hover {
+    background: #0056b3;
+}
+
+.content {
+    width: 770px;
+    background: linear-gradient(to bottom, #D7EAFB, #FFFFFF);
+    padding: 15px;
+    border-left: 3px solid #ccc;
+}
+
+.marquee {
+    font-size: 20px;
+    color: #0000FF;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    font-size: 14px;
+    background: linear-gradient(to bottom, #D7EAFB, #FFFFFF);
+    padding: 10px;
+    position: relative;
+}
+
+.footer a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* 新增圖片的樣式 */
+.footer img {
+    position: absolute;
+    right: 10px;  /* 使圖片靠右顯示 */
+    top: 50%;
+    transform: translateY(-50%);  /* 垂直居中 */
+    width: 30px;  /* 圖片大小，可根據需要調整 */
+    height: auto;
+}
+.footer div {
+    position: absolute;
+    right: 40px;  /* 使圖片靠右顯示 */
+    top: 50%;
+    transform: translateY(-50%);  /* 垂直居中 */
+    width: 30px;  /* 圖片大小，可根據需要調整 */
+    height: auto;
 }
 </style>
 </head>
 <body>
-<div align="center">
-  <table width="1024" border="1">
+
+<div class="container">
+  <table class="main-table">
+    <!-- Header -->
     <tr>
-      <td height="65" colspan="2" align="center" style="background:linear-gradient(to bottom, #D7EAFB, #FFFFFF);"><a href="VisitorCounterServlet?page=register/loginSuccess.jsp" target="_top" ><img src="http://huanggod.myddns.me:8080/Company/pic/logo3.png" width="1000" height="65" /></a></td>
+      <td colspan="2" class="header">
+        <a href="VisitorCounterServlet?page=register/loginSuccess.jsp" target="_top">
+          <img src="http://huanggod.myddns.me:8080/Company/pic/logo4.png" alt="Logo">
+        </a>
+      </td>
     </tr>
+
+    <!-- Main Content -->
     <tr>
-      <td width="215" height="683" align="center" style="vertical-align:text-top; background:linear-gradient(to bottom, #D7EAFB, #FFFFFF);" ><div id="div1">
-        <p class="s1">智能娃娃機營運監控系統</p>
-        <table width="100%" border="0">
-          <tr>
-            <td align="center"><div class="s2"><a href="VisitorCounterServlet?page=register/profile.jsp" target="imain">個人資料</a></div></td>
-          </tr>
-          <tr>
-            <td align="center"><div class="s2"><a href="VisitorCounterServlet?page=register/machineInformation.jsp" target="imain">機台資訊</a></div></td>
-          </tr>
-          <tr>
-            <td align="center"><div class="s2"><a href="" target="imain"></a></div></td>
-          </tr>
-          <tr>
-            <td align="center"><div class="s2"><a href="" target="imain"></a></div></td>
-          </tr>
-          <tr>
-            <td align="center"><div class="s2"><a href="" target="imain"></a></div></td>
-          </tr>
-          <tr>
-            <td align="center"><div class="s2"><a href="VisitorCounterServlet?page=register/aboutMe.jsp" target="imain">關於我們</a></div></td>
-          </tr>
-        </table>
-    	<p>歡迎使用者：<%= name %></p>
-    	<p>當前瀏覽人次： <%= visitorCount %></p>
-        <p>&nbsp;</p>
-      </div>
-      <div id="div2" style="font-family: '標楷體'; font-size: 16px; color: #000000;">最近更新日期：2025/01/25</div></td>
-      <td width="770" valign="top" style="background:linear-gradient(to bottom, #D7EAFB, #FFFFFF);"><div id="div3"><marquee>歡迎光臨智能娃娃機營運監控系統，系統將於每天晚上12點自動更新</marquee></div><iframe src="http://huanggod.myddns.me:8080/Company/main.html" name="imain" width="770" height="654"></iframe></td>
+      <!-- Sidebar -->
+      <td class="sidebar">
+        <div class="title">智能娃娃機監控系統</div>
+        <ul class="menu">
+          <li><a href="VisitorCounterServlet?page=register/profile.jsp" target="imain">個人資料</a></li>
+          <li><a href="VisitorCounterServlet?page=register/machineInformation.jsp" target="imain">機台資訊</a></li>
+          <li><a href="ChatController" target="imain">留言板</a></li>
+          <li><a href="VisitorCounterServlet?page=register/aboutMe.jsp" target="imain">聯絡我們</a></li>
+        </ul>
+        <p>歡迎使用者：<%= name %></p>
+        <p>當前瀏覽人次：<%= visitorCount %></p>
+      </td>
+
+      <!-- Main Content -->
+      <td class="content">
+        <div class="marquee">
+          <marquee>歡迎使用智能娃娃機營運監控系統，系統將於每天晚上12點自動更新</marquee>
+        </div>
+        <iframe src="VisitorCounterServlet?page=register/main.html" name="imain" width="100%" height="600"></iframe>
+      </td>
     </tr>
+
+    <!-- Footer -->
     <tr>
-      <td height="20" colspan="2" align="center" style="font-family: '標楷體'; font-size: 16px; color: #000000; background:linear-gradient(to bottom, #D7EAFB, #FFFFFF);">網頁設計及維護：張哲豪
-      <a href="VisitorCounterServlet?page=/LogoutController">登出</a></td>
+      <td colspan="2" class="footer">
+        維護：第二組 | <a href="VisitorCounterServlet?page=/LogoutController">登出</a>
+        <!-- 在這裡放置圖片 -->
+        <a href="VisitorCounterServlet?page=game/gameIndex.jsp" target="imain" alt="2048">
+        <img class="2048" src="http://huanggod.myddns.me:8080/Company/pic/2048_game_icon.png" alt="2048 Game Icon">
+        </a> 
+        <div class="1A2B">       
+	        <a href="VisitorCounterServlet?page=game/game1A2B.jsp" target="imain" alt="1A2B">
+			    <img src="http://huanggod.myddns.me:8080/Company/pic/1A2B_game_icon.png" alt="1A2B Game Icon">
+			</a>
+		</div>
+      </td>
     </tr>
   </table>
 </div>
-
 
 </body>
 </html>
