@@ -72,7 +72,7 @@ public class CaptchaServlet extends HttpServlet {
     }
 
     private String generateCaptchaString(int length) {
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        String chars = "0123456789";//ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
         StringBuilder captcha = new StringBuilder();
         Random random = new Random();
         for (int i = 0; i < length; i++) {

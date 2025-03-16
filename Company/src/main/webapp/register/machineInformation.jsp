@@ -57,7 +57,7 @@
             margin-top: 20px;
         }
 
-        img, iframe {
+        img, iframe, video {
             width: 500px;
             height: 300px;
             border-radius: 10px;
@@ -97,14 +97,24 @@
             let imageElement = document.getElementById("machineImage");
             let cameraElement = document.getElementById("camera");
             let cameraFrameElement = document.getElementById("cameraFrame");
+            let videoElement = document.getElementById("machineVideo");
 
             if (imageUrl) {
                 imageElement.src = imageUrl;
                 toggleDisplayElements(true, "image");
-            } else if (cameraUrl && cameraUrl.startsWith("http")) {
+            } else if (cameraUrl) {
                 if (cameraUrl.match(/\.(jpeg|jpg|gif|png)$/)) {
                     cameraElement.src = cameraUrl;
                     toggleDisplayElements(true, "camera");
+                } else if (cameraUrl.endsWith(".mp4")) {
+                    videoElement.src = cameraUrl;
+                    videoElement.load();
+                    videoElement.play();
+                    toggleDisplayElements(true, "video");
+                } else if (cameraUrl.includes("youtube.com") || cameraUrl.includes("youtu.be")) {
+                    let youtubeEmbedUrl = convertToYouTubeEmbed(cameraUrl);
+                    cameraFrameElement.src = youtubeEmbedUrl;
+                    toggleDisplayElements(true, "cameraFrame");
                 } else {
                     cameraFrameElement.src = cameraUrl;
                     toggleDisplayElements(true, "cameraFrame");
@@ -115,10 +125,21 @@
             }
         }
 
+        function convertToYouTubeEmbed(url) {
+            let videoId;
+            let match = url.match(/[?&]v=([^&]+)/) || url.match(/youtu\.be\/([^?]+)/);
+            if (match) {
+                videoId = match[1];
+                return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&enablejsapi=1`;
+            }
+            return url;
+        }
+
         function toggleDisplayElements(show, type = "") {
             document.getElementById("machineImage").style.display = (show && type === "image") ? "block" : "none";
             document.getElementById("camera").style.display = (show && type === "camera") ? "block" : "none";
             document.getElementById("cameraFrame").style.display = (show && type === "cameraFrame") ? "block" : "none";
+            document.getElementById("machineVideo").style.display = (show && type === "video") ? "block" : "none";
         }
 
         function changeMachine(direction) {
@@ -194,15 +215,16 @@
         <div class="machine-display">
             <h3 id="machineName">請選擇場地</h3>
             <img id="camera" alt="監視器畫面"/>
-            <iframe id="cameraFrame"></iframe>
+            <iframe id="cameraFrame" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
             <img id="machineImage" alt="機台圖片"/>
+            <video id="machineVideo" controls autoplay loop muted></video>
         </div>
 
-        <br>
         <button onclick="changeMachine(-1)">⬆ 上一台 ⬆</button>
         <button onclick="changeMachine(1)">⬇ 下一台 ⬇</button>
-
-        <br><br>
+    </div>
+    <br><br>
+    <div>
         <a href="VisitorCounterServlet?page=register/addLocation.jsp">➕ 新增場地</a> |
         <a href="VisitorCounterServlet?page=register/addMachine.jsp">➕ 新增機台</a>
     </div>

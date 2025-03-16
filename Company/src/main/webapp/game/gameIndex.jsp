@@ -74,6 +74,7 @@
     <div class="game-container">
         <h1>2048 Game</h1>
         <button onclick="window.location.href='VisitorCounterServlet?page=game/game.jsp'">開始遊戲</button>
+        <button onclick="window.location.href='VisitorCounterServlet?page=game/2048leaderboard.jsp'">排行榜</button>
     </div>
 </body>
 </html>
