@@ -185,14 +185,14 @@ body {
       <td colspan="2" class="footer">
         維護：第二組 | <a href="VisitorCounterServlet?page=/LogoutController">登出</a>
         <!-- 在這裡放置圖片 -->
-        <a href="VisitorCounterServlet?page=game/gameIndex.jsp" target="imain" alt="2048">
+        <a href="VisitorCounterServlet?page=game/gameList.jsp" target="imain" alt="遊戲列表">
         <img class="2048" src="http://huanggod.myddns.me:8080/Company/pic/2048_game_icon.png" alt="2048 Game Icon">
         </a> 
-        <div class="1A2B">       
-	        <a href="VisitorCounterServlet?page=game/game1A2B.jsp" target="imain" alt="1A2B">
+        <!--  <div class="1A2B">       
+	        <a href="VisitorCounterServlet?page=game/1A2Bgame/game1A2B.jsp" target="imain" alt="1A2B">
 			    <img src="http://huanggod.myddns.me:8080/Company/pic/1A2B_game_icon.png" alt="1A2B Game Icon">
 			</a>
-		</div>
+		</div>-->
       </td>
     </tr>
   </table>

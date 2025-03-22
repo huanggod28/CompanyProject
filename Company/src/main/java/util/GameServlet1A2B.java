@@ -31,7 +31,7 @@ public class GameServlet1A2B extends HttpServlet {
         }
 
         // 轉發到 JSP 頁面
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/game/game1A2B.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/game/1A2Bgame/game1A2B.jsp");
         dispatcher.forward(request, response);
     }
 

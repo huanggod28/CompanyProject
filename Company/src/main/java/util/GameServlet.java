@@ -22,7 +22,7 @@ public class GameServlet extends HttpServlet {
         }
 
         request.setAttribute("grid", grid);
-        request.getRequestDispatcher("/game.jsp").forward(request, response);
+        request.getRequestDispatcher("game/2048game/game.jsp").forward(request, response);
     }
 
     // 處理用戶的操作，更新棋盤

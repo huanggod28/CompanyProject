@@ -81,7 +81,7 @@
         </tbody>
     </table>
     <div class="game-container">
-        <button onclick="window.location.href='VisitorCounterServlet?page=game/game.jsp'">開始遊戲</button>
+        <button onclick="window.location.href='VisitorCounterServlet?page=game/2048game/game.jsp'">開始遊戲</button>
     </div>
 
     <script type="text/javascript">
