@@ -90,7 +90,7 @@
             <p><strong>地址：</strong> <%= address %></p>
         </div>
         <nav>
-            <a href="VisitorCounterServlet?page=register/main.html">返回首頁</a>
+            <a href="VisitorCounterServlet?page=register/main2.html">返回首頁</a>
         </nav>
     </div>
 </body>

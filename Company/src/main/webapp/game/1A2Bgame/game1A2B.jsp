@@ -63,7 +63,10 @@
         <form action="GameServlet1A2B" method="POST">
             <button type="submit" name="action" value="start">開始新遊戲</button>
         </form>
-
+		<%
+			String gameNumber =(String)session.getAttribute("gameNumber");
+			if(gameNumber != null){
+		%>
         <!-- 顯示猜測紀錄 -->
         <div class="guesses">
             <h3>猜測紀錄</h3>
@@ -98,9 +101,10 @@
             Boolean showAnswer = (Boolean) session.getAttribute("showAnswer");
             if (Boolean.TRUE.equals(showAnswer)) {
                 String answer = (String) session.getAttribute("gameNumber");
-                out.println("<p>答案: " + answer + "</p>");
+                out.println("<p>答案: " + answer + "</p>"+"請重新開始遊戲或在輸入框填寫正確答案");
             }
         %>
+        <% } %>
     </div>
 </body>
 </html>

@@ -74,13 +74,13 @@
                 <li><a href="VisitorCounterServlet?page=game/1A2Bgame/game1A2B.jsp" target="imain">猜數字</a></li>
                 <li><a href="VisitorCounterServlet?page=game/2048game/gameIndex.jsp" target="imain">2048</a></li>
                 <li><a href="VisitorCounterServlet?page=game/777game/777gameRules.jsp" target="imain">777拉霸</a></li>
-                <li><a href="VisitorCounterServlet?page=game/" target="imain">井字遊戲</a></li>
-                <li><a href="VisitorCounterServlet?page=game/" target="imain">走迷宮</a></li>
-                <li><a href="VisitorCounterServlet?page=game/" target="imain">打地鼠</a></li>
-                <li><a href="VisitorCounterServlet?page=game/" target="imain">打磚塊</a></li>
-                <li><a href="VisitorCounterServlet?page=game/" target="imain">五子棋</a></li>
-                <li><a href="VisitorCounterServlet?page=game/" target="imain">貪食蛇</a></li>
-                <li><a href="VisitorCounterServlet?page=game/" target="imain">賽車</a></li>
+                <li><a href="VisitorCounterServlet?page=game/tictactoe/gameIndex.jsp" target="imain">井字遊戲</a></li>
+                <li><a href="VisitorCounterServlet?page=game/gameError.jsp" target="imain">走迷宮</a></li>
+                <li><a href="VisitorCounterServlet?page=game/gameError.jsp" target="imain">打地鼠</a></li>
+                <li><a href="VisitorCounterServlet?page=game/gameError.jsp" target="imain">打磚塊</a></li>
+                <li><a href="VisitorCounterServlet?page=game/gameError.jsp" target="imain">五子棋</a></li>
+                <li><a href="VisitorCounterServlet?page=game/gameError.jsp" target="imain">貪食蛇</a></li>
+                <li><a href="VisitorCounterServlet?page=game/gameError.jsp" target="imain">賽車</a></li>
                 <!-- <li><a href="VisitorCounterServlet?page=game/" target="imain">英打練習</a></li>
                 <li><a href="VisitorCounterServlet?page=game/" target="imain">中打練習</a></li>
                 <li><a href="VisitorCounterServlet?page=game/" target="imain"></a></li>

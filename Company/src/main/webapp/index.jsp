@@ -9,7 +9,7 @@
 <link type="text/css" rel="stylesheet" href="style.css">
 <style>
 body{
-	background-image: url(pic/bacc01.jpg);
+	<!--background-image: url(pic/bacc01.jpg);-->	
 	background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
