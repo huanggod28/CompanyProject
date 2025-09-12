@@ -4,12 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>智能娃娃機營運監控系統</title>
+<title>英打遊戲</title>
 </head>
 <body>
-<div id="mid">
-<h3>無此帳號，請先註冊</h3>
-<a href="register.jsp">註冊帳號</a>
-</div>
+
 </body>
 </html>

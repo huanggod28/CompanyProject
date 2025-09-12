@@ -48,4 +48,44 @@ public class LocationDaoImpl implements LocationDao {
             e.printStackTrace();
         }
     }
+    
+    @Override
+    public void updateLocation(Location location) {
+        String sql = "UPDATE Locations SET name=?, address=? WHERE id=?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, location.getName());
+            stmt.setString(2, location.getAddress());
+            stmt.setInt(3, location.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteLocation(int locationId) {
+        try {
+            // 刪掉該場地下所有機台及其參數
+            String sqlMachines = "SELECT id FROM Machines WHERE location_id=?";
+            try (PreparedStatement stmt = conn.prepareStatement(sqlMachines)) {
+                stmt.setInt(1, locationId);
+                ResultSet rs = stmt.executeQuery();
+                MachineDaoImpl machineDao = new MachineDaoImpl();
+                while (rs.next()) {
+                    int machineId = rs.getInt("id");
+                    machineDao.deleteMachine(machineId); // 會連帶刪 machine_parameters
+                }
+            }
+
+            // 刪掉場地
+            String sqlLocation = "DELETE FROM Locations WHERE id=?";
+            try (PreparedStatement stmt = conn.prepareStatement(sqlLocation)) {
+                stmt.setInt(1, locationId);
+                stmt.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

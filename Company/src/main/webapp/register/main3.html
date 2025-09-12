@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系統介紹</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        /* 粒子背景容器 */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background: linear-gradient(45deg, #1A1A1A, #0A0A0A);
+            position: relative;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            line-height: 1.8;
+            color: #00FFFF;
+        }
+
+        .highlight {
+            color: #00FFFF;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 14px;
+            color: #00FFFF;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<div id="particles-js"></div>
+
+<div class="container">
+    <h2>
+        <span class="highlight">「智能娃娃基營運監控系統」</span>是一套專為娃娃機業主打造的智慧管理平台，旨在協助業主有效監控與管理旗下機台，進而降低人力成本。系統支援場地與機台的自定義新增，並可上傳監視畫面，讓業主即時掌握機台運作狀況。透過遠端調整機台設定與數據分析，場主可輕鬆優化營運策略並精準計算營利表現。此外，系統具備異常偵測功能，當機台發生故障或異常情況時，將即時發出警報通知業主，大幅提升管理效率與機台營運穩定性。
+    </h2>
+</div>
+
+<footer>
+    <p>© 2025 致理科大夜資四A第二組 - 所有權利保留</p>
+</footer>
+
+<!-- 初始化粒子背景 -->
+<script>
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 80 },
+        color: { value: "#00ffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.3 },
+        size: { value: 3 },
+        line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#00ffff",
+            opacity: 0.3,
+            width: 1
+        },
+        move: { enable: true, speed: 2 }
+    },
+    interactivity: {
+        events: { onhover: { enable: true, mode: "grab" } },
+        modes: {
+            grab: { distance: 200, line_linked: { opacity: 0.5 } }
+        }
+    },
+    retina_detect: true
+});
+</script>
+
+</body>
+</html>

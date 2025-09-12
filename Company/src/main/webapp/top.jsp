@@ -35,7 +35,7 @@ body {
 .navbar .menu .btn {
   position: relative;
   display: inline-block;
-  padding: 8px 16px;
+  padding: 8px 10px;
   color: white;
   background-color: black;
   border: 0px solid #444; /* 淡邊線 */
@@ -50,15 +50,17 @@ body {
 .navbar .menu .btn::after {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 94.5%;
+  height: 80%;
   top: 0;
   left: 0;
-  border-radius: 20px;
+  right: 0;
+  bottom: 0;
+  border-radius: 140px;/*線長*/
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #ffd700 50%,
+    white 50%,
     transparent 100%
   );
   animation: moveLight 2.5s linear infinite;
@@ -86,9 +88,9 @@ body {
 }
 
 .navbar .menu .btn:hover {
-  border: 1px solid gold; /* 淡邊線 */
-  color: gold;
-  border-color: gold;
+  border: 1px solid white; /* 淡邊線 */
+  color: white;
+  border-color: white;
   
 }
 /*這是按鈕*/
@@ -96,12 +98,17 @@ body {
 	background-color: black;
 	color:white;
 	font-size:18px;
+	pointer-events: none;
+	margin: 0;
+	margin-left:3px;
+	border:none;
 }
 /*這是按鈕*/
 .navbar .menu .bn{
 	background-color: black;
 	color:white;
 	font-size:18px;
+	pointer-events: none;
 }
 
 .navbar .bell-icon {
@@ -120,6 +127,11 @@ body {
 .logo img {
 	height: 60px; /* 可依照你圖示調整大小 */
 }
+.navbar .menu img {
+  height: 30px; /* 設定圖片高度 */
+  width: auto; /* 等比例縮放寬度 */
+  vertical-align: middle; /* 讓圖片垂直置中 */
+}
 </style>
 <!-- Font Awesome CDN for bell icon -->
 <link rel="stylesheet"
@@ -133,7 +145,7 @@ body {
 			<img src="pic/IDO.png" alt="Logo">智能娃娃機營運監控系統
 		</div>
 		<div class="menu">
-			<a href="" target=_blank alt="" class="btn">
+			<!--<a href="" target=_blank alt="" class="btn">
 				<button class="bn">Learn</button>
 			</a>
 			<a href="" target=_blank alt="" class="btn">
@@ -141,11 +153,13 @@ body {
 			</a>
 			<a href="#" target=_blank alt="" class="btn">
 				<button class="bn">Add Sonic</button>
-			</a>			
+			</a>-->			
 			<a href="https://www.chihlee.edu.tw/" target=_blank alt=致理 class="btn">
+				<img src="pic/ChihleeIcon.png" alt="Chihlee">
 				<button class="bn">Chihlee</button>
 			</a>
-			<a href="https://discord.gg/r3YC8Ckk" target=_blank alt=doscord群組 class="btn">
+			<a href="https://discord.gg/Qfh4tRRUT9" target=_blank alt=doscord群組 class="btn">
+				<img src="pic/DiscordIcon.png" alt="Discord">
 				<button class="bn">Discord</button>
 			</a>
 			<i class="fas fa-bell bell-icon"></i>

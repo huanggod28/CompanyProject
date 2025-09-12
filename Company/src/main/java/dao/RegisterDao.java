@@ -12,7 +12,7 @@ public interface RegisterDao {
 	boolean findByUsername(String username);
 	Register selectMember(int id); //select * from member where id=?
 	//update
-	void updateMember(int id,String name,String password,String address,String phone);
+	void updateRegister(int id,String name,String password,String address,String phone);
 	
 	//delete
 }

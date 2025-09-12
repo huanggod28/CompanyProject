@@ -43,6 +43,7 @@
         }
 
         body {
+        	height:948px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #fff;
             margin: 0;
@@ -63,18 +64,24 @@
 
         .container {
             display: flex;
-            justify-content: center;
+            justify-content: center; /* 水平置中 */
+            align-items: flex-start; /* 垂直靠上 */
             padding-top: 0;
         }
 
         .main-table {
-            width: 1024px;
+            width: 1280px;
             border-radius: 10px;
             overflow: hidden;
+            margin-top: 0; /* 靠上 */
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px); /* 背景模糊效果 */
         }
+        
+        .main-table td {
+		    vertical-align: top; /* 靠上 */
+		}
 
         .header {
             text-align: center;
@@ -104,6 +111,10 @@
             margin-bottom: 10px;
             border-bottom: 2px solid #00FFFF;
             padding-bottom: 5px;
+        }
+        
+        .sidebar a{
+        	color: #00FFFF; /* 螢光藍 */
         }
 
         .menu {
@@ -144,9 +155,14 @@
         .marquee {
             font-size: 20px;
             color: #00FFFF; /* 螢光藍 */
-            padding: 10px 0;
+            padding: 5px 0;
             font-weight: bold;
             animation: textColorChange 5s infinite;
+        }
+        
+        iframe{
+        	height:700px;
+        	border:none;
         }
 
         .footer {
@@ -158,29 +174,36 @@
             box-shadow: 0px -4px 10px rgba(0, 255, 255, 0.5); /* 底部發光效果 */
         }
 
-        .footer a {
+        .bottom a {
             color: #00FFFF;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
-        .footer a:hover {
+        .bottom a:hover {
             color: #FF4500; /* 螢光橙 */
             text-decoration: underline;
         }
 
-        .footer img {
+        .bottom img {
             position: absolute;
-            right: 10px;
+            right: 320px;
             top: 50%;
             transform: translateY(-50%);
             width: 30px;
             height: auto;
         }
+        .bottom {
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+            padding-bottom: 0px;
+            position: relative;
+        }
     </style>
 </head>
 <body>
-<div id="top"><jsp:include page="../top.jsp"/></div>
+
 <!-- 粒子背景 -->
 <div id="particles-js"></div>
 
@@ -206,26 +229,30 @@
                 </ul>
                 <p>歡迎使用者：<%= name %></p>
                 <p>當前瀏覽人次：<%= visitorCount %></p>
+                <p>維護：第二組</p>
+                <p><a href="VisitorCounterServlet?page=/LogoutController">登出</a></p>
             </td>
 
             <td class="content">
                 <div class="marquee">
                     <marquee>歡迎使用智能娃娃機營運監控系統，系統將於每天晚上12點自動更新</marquee>
                 </div>
-                <iframe src="VisitorCounterServlet?page=register/main2.html" name="imain" width="100%" height="600"></iframe>
+                <iframe src="VisitorCounterServlet?page=register/main3.html" name="imain" width="100%" height="600"></iframe>
             </td>
         </tr>
 
-        <tr>
+        <!--  <tr>
             <td colspan="2" class="footer">
-                維護：第二組 |
-                <a href="VisitorCounterServlet?page=/LogoutController">登出</a>
-                <a href="VisitorCounterServlet?page=game/gameList.jsp" target="imain" alt="遊戲列表">
+                
+                
+            </td>
+        </tr>-->
+    </table>
+</div>
+<div class="bottom">© 2025 致理科大夜資四A第二組 - 所有權利保留
+				<a href="VisitorCounterServlet?page=game/gameList.jsp" target="imain" alt="遊戲列表">
                     <img src="http://huanggod.myddns.me:8080/Company/pic/2048_game_icon.png" alt="2048 Game Icon">
                 </a>
-            </td>
-        </tr>
-    </table>
 </div>
 <script>
     particlesJS("particles-js", {

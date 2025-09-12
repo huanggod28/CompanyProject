@@ -162,7 +162,7 @@ button:hover {
 
 		<!-- 返回首頁的按鈕 -->
 		<button
-			onclick="window.location.href='VisitorCounterServlet?page=register/main.html'">回到首頁</button>
+			onclick="window.location.href='VisitorCounterServlet?page=register/main3.html'">回到首頁</button>
 	</div>
 
 	<script type="text/javascript">

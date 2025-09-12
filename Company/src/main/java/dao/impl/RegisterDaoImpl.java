@@ -48,33 +48,33 @@ public class RegisterDaoImpl implements RegisterDao {
 
 	@Override
 	public Register findUsernameAndPassword(String username, String password) {
-		String SQL="select * from register where username=? and password=?";
-		Register register=null;
-		try {
-			PreparedStatement PreparedStatement=conn.prepareStatement(SQL);
-			PreparedStatement.setString(1, username);
-			PreparedStatement.setString(2, password);
-			ResultSet resultSet=PreparedStatement.executeQuery();
-			
-			if(resultSet.next())
-			{
-				register=new Register();
-				register.setId(resultSet.getInt("id"));
-				register.setName(resultSet.getString("name"));
-				register.setUsername(resultSet.getString("username"));
-				register.setPassword(resultSet.getString("password"));
-				register.setPhone(resultSet.getString("phone"));
-				register.setEmail(resultSet.getString("email"));				
-				register.setGenger(resultSet.getString("genger"));
-				register.setAddress(resultSet.getString("address"));
-			}
-			
-		}catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return register;
+	    String SQL="select * from register where username=? and password=?";
+	    Register register=null;
+	    try {
+	        PreparedStatement PreparedStatement=conn.prepareStatement(SQL);
+	        PreparedStatement.setString(1, username);
+	        PreparedStatement.setString(2, password);
+	        ResultSet resultSet=PreparedStatement.executeQuery();
+	        
+	        if(resultSet.next())
+	        {
+	            register=new Register();
+	            register.setId(resultSet.getInt("id"));
+	            register.setName(resultSet.getString("name"));
+	            register.setUsername(resultSet.getString("username"));
+	            register.setPassword(resultSet.getString("password"));
+	            register.setPhone(resultSet.getString("phone"));
+	            register.setEmail(resultSet.getString("email"));                
+	            register.setGenger(resultSet.getString("genger"));
+	            register.setAddress(resultSet.getString("address"));
+	            register.setWhitelist(resultSet.getBoolean("is_whitelist")); // ✅ 新增
+	        }
+	        
+	    }catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return register;
 	}
 
 	@Override
@@ -127,7 +127,7 @@ public class RegisterDaoImpl implements RegisterDao {
 	}
 
 	@Override
-	public void updateMember(int id, String name, String password, String address, String phone) {
+	public void updateRegister(int id, String name, String password, String address, String phone) {
 		// TODO Auto-generated method stub
 		
 	}

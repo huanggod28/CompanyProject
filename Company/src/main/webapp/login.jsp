@@ -59,7 +59,8 @@ body {
 h2 {
 	color: #00ffff;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-	padding-bottom: 10px;
+	padding-bottom: 20px;
+	margin-top: 0;
 	margin-bottom: 20px;
 	text-align: center;
 }
@@ -75,14 +76,15 @@ input[type="text"], input[type="password"] {
 }
 
 .captcha-container {
-	display: flex;
-	align-items: center;
-	gap: 10px;
+	display: flex; <!--
+	align-items: center; -->
+	gap: 20px;
 }
 
 .captcha-container img {
 	height: 40px;
 	cursor: pointer;
+	margin-left: 10px;
 	border-radius: 6px;
 }
 
@@ -133,11 +135,22 @@ to {
 	opacity: 1;
 	transform: translateY(0);
 }
+
 }
-blockquote{
-	margin:0px;
-	margin-left:10px;
-	padding:0px;
+blockquote {
+	margin: 0px;
+	margin-left: 15px;
+	padding: 0px;
+}
+
+div input[type="submit"]:hover {
+	background-color: #00cccc;
+	transform: scale(1.05); /*字體放大特效*/
+}
+
+div input[type="reset"]:hover {
+	background-color: lightgray;
+	transform: scale(1.05); /*字體放大特效*/
 }
 </style>
 </head>
@@ -150,96 +163,144 @@ blockquote{
 		<div class="card">
 			<h2>最新文章</h2>
 			<ul style="padding-left: 0; list-style: none;">
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a1')">◎如何選擇熱門娃娃：吸引玩家的商品策略</a>
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a1')">◎如何選擇熱門娃娃：吸引玩家的商品策
+						<blockquote>略</blockquote>
+				</a>
 					<div id="a1" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
 						這篇文章探討了夾娃娃機業者如何透過與上游廠商或他國平台的批貨，以更為低廉的成本進貨，
-						並設定合理的、高於成本的夾取門檻，即使人流不多，獲取的利潤也夠支付租金，且機台的資金回收期短，獲利基礎非常穩健。
-						<a href="https://www.saas.cybersoft.tw/post/%E5%A8%83%E5%A8%83%E6%A9%9F%E5%89%B5%E6%A5%AD?utm_source=chatgpt.com" alt="文章1" target=_blank>完整文章</a></div></li>
-						
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a2')">◎地點選擇與利潤分析：找到高效益的黃金<br><blockquote>位置</blockquote></a>
+						並設定合理的、高於成本的夾取門檻，即使人流不多，獲取的利潤也夠支付租金，且機台的資金回收期短，獲利基礎非常穩健。 <a
+							href="https://www.saas.cybersoft.tw/post/%E5%A8%83%E5%A8%83%E6%A9%9F%E5%89%B5%E6%A5%AD?utm_source=chatgpt.com"
+							alt="文章1" target=_blank>完整文章</a>
+					</div></li>
+
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a2')">◎地點選擇與利潤分析：找到高效益的黃<br>
+					<blockquote>金位置</blockquote></a>
 					<div id="a2" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
 						本文探討了夾娃娃機店的地點選擇對業績的影響，指出即使在相對偏僻的地點，如台中西屯區的夾子園旗艦店，仍能吸引大量顧客，顯示地點選擇與經營策略的關聯性。
-						<a href="https://www.peopo.org/news/634682?utm_source=chatgpt.com" alt="文章" target=_blank>完整文章</a></div></li>
-						
+						<a href="https://www.peopo.org/news/634682?utm_source=chatgpt.com"
+							alt="文章" target=_blank>完整文章</a>
+					</div></li>
+
 				<li><a href="javascript:void(0);" onclick="toggleArticle('a3')">◎補貨時間管理策略：保持吸引力的關鍵</a>
 					<div id="a3" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
-						這篇文章講解如何安排補貨時程與頻率，避免機台空空如也或商品過時，並提供不同客群與地點的補貨需求範例。
-						<a href="https://aiwahu.tw/clip-doll/?utm_source=chatgpt.com" alt="文章" target=_blank>完整文章</a></div></li>
-						
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a4')">◎娃娃機經營趨勢報告：從投資玩具到打造<blockquote>品牌體驗</blockquote></a>
+						這篇文章講解如何安排補貨時程與頻率，避免機台空空如也或商品過時，並提供不同客群與地點的補貨需求範例。 <a
+							href="https://aiwahu.tw/clip-doll/?utm_source=chatgpt.com"
+							alt="文章" target=_blank>完整文章</a>
+					</div></li>
+
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a4')">◎娃娃機經營趨勢報告：從投資玩具到打
+						<blockquote>造品牌體驗</blockquote>
+				</a>
 					<div id="a4" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
 						這篇報告分析了2024年娃娃機市場的發展趨勢，指出全球市場規模持續擴大，預計到2028年將超過50億美元，並強調亞太地區特別是中國市場的主導地位。
-						<a href="https://big5.chinabgao.com/freereport/96693.html?utm_source=chatgpt.com" alt="文章" target=_blank>完整文章</a></div></li>
-				
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a5')">◎營運成本控管：從機台、租金到電費的<blockquote>預算分配</blockquote></a>
+						<a
+							href="https://big5.chinabgao.com/freereport/96693.html?utm_source=chatgpt.com"
+							alt="文章" target=_blank>完整文章</a>
+					</div></li>
+
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a5')">◎營運成本控管：從機台、租金到電費的
+						<blockquote>預算分配</blockquote>
+				</a>
 					<div id="a5" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
-						本文介紹了零食娃娃機的經營模式，指出其成本較低、回本速度快，並探討了在競爭激烈的市場中，業者如何透過商品選擇和行銷活動來吸引消費者。 ​
-						<a href="https://www.peopo.org/news/657644?utm_source=chatgpt.com" alt="文章" target=_blank>完整文章</a></div></li>
-						
+						本文介紹了零食娃娃機的經營模式，指出其成本較低、回本速度快，並探討了在競爭激烈的市場中，業者如何透過商品選擇和行銷活動來吸引消費者。
+						​ <a
+							href="https://www.peopo.org/news/657644?utm_source=chatgpt.com"
+							alt="文章" target=_blank>完整文章</a>
+					</div></li>
+
 				<li><a href="javascript:void(0);" onclick="toggleArticle('a6')">◎玩家心理學：了解消費者行為提升營收</a>
 					<div id="a6" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
-						本本文從心理學角度剖析玩家為何願意投幣（如成就感、好奇心、賭博心理），並提供設計機台與選品策略以對應這些心理。
-						<a href="https://gogolvyouqu.wordpress.com/2024/06/03/parent-child-playground-claw-machine/?utm_source=chatgpt.com" alt="文章" target=_blank>完整文章</a></div></li>
-						
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a7')">◎娃娃機行銷術：用活動與社群打造人氣機<blockquote>台</blockquote></a>
+						本文從心理學角度剖析玩家為何願意投幣（如成就感、好奇心、賭博心理），並提供設計機台與選品策略以對應這些心理。 <a
+							href="https://gogolvyouqu.wordpress.com/2024/06/03/parent-child-playground-claw-machine/?utm_source=chatgpt.com"
+							alt="文章" target=_blank>完整文章</a>
+					</div></li>
+
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a7')">◎娃娃機行銷術：用活動與社群打造人氣
+						<blockquote>機台</blockquote>
+				</a>
 					<div id="a7" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
-						這篇文章介紹了五種創意的夾娃娃機活動方案，包括社交媒體互動挑戰、會員集點活動等，幫助中小企業提升品牌曝光率和顧客參與度。
-						<a href="https://hkclawmachine.com/%E5%A4%BE%E5%A8%83%E5%A8%83%E6%A9%9F%E6%B4%BB%E5%8B%95%E6%96%B9%E6%A1%88/?utm_source=chatgpt.com" alt="文章" target=_blank>完整文章</a></div></li>
-						
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a8')">◎多機台經營技巧：如何擴張你的娃娃機<blockquote>王國</blockquote></a>
+						這篇文章介紹了五種創意的夾娃娃機活動方案，包括社交媒體互動挑戰、會員集點活動等，幫助中小企業提升品牌曝光率和顧客參與度。 <a
+							href="https://hkclawmachine.com/%E5%A4%BE%E5%A8%83%E5%A8%83%E6%A9%9F%E6%B4%BB%E5%8B%95%E6%96%B9%E6%A1%88/?utm_source=chatgpt.com"
+							alt="文章" target=_blank>完整文章</a>
+					</div></li>
+
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a8')">◎多機台經營技巧：如何擴張你的娃娃機
+						<blockquote>王國</blockquote>
+				</a>
 					<div id="a8" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
 						本文探討了夾娃娃機店的經營策略，強調持續創新和提供獨特體驗的重要性，並建議業者跳脫傳統無人娃娃機店的經營模式，以消費者為中心，提升顧客黏著度。​
-						<a href="https://www.wisho2o.com/article/new-interactive-entertainment-experience?utm_source=chatgpt.com" alt="文章" target=_blank>完整文章</a></div></li>
-						
+						<a
+							href="https://www.wisho2o.com/article/new-interactive-entertainment-experience?utm_source=chatgpt.com"
+							alt="文章" target=_blank>完整文章</a>
+					</div></li>
+
 				<li><a href="javascript:void(0);" onclick="toggleArticle('a9')">◎娃娃機法律與營運合規知識</a>
 					<div id="a9" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
 						本文詳細探討了夾娃娃機經營中可能涉及的法律問題，包括機台分類、商品合法性、機台改裝限制等。​文章指出，夾娃娃機若被經濟部評鑑為「電子遊戲機」，需取得相關營業證照；若為「選物販賣機」，
 						則需確保商品價值與保夾金額相當，且不得擺放盜版商品或未經審核的電子產品。​此外，改裝機台以影響遊戲結果，可能觸犯詐欺等刑事責任。​
-						<a href="https://www.legis-pedia.com/QA/question/707" alt="文章" target=_blank>完整文章</a></div></li>
-						
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a10')">◎創業案例分享：從副業到月入十萬的娃娃<blockquote>機經營者故事</blockquote></a>
+						<a href="https://www.legis-pedia.com/QA/question/707" alt="文章"
+							target=_blank>完整文章</a>
+					</div></li>
+
+				<li><a href="javascript:void(0);"
+					onclick="toggleArticle('a10')">◎創業案例分享：從副業到月入十萬的娃
+						<blockquote>娃機經營者故事</blockquote>
+				</a>
 					<div id="a10" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
 						本文分享了夾娃娃機經營者的創業經驗，探討了他們如何透過選擇合適的商品和地點，以及創新的行銷策略，成功地將副業轉變為穩定的收入來源。
-						<a href="https://www.wishmobile.com/blogs/marketing/claw_machine_LINE_marketing?utm_source=chatgpt.com" alt="文章" target=_blank>完整文章</a></div></li>
+						<a
+							href="https://www.wishmobile.com/blogs/marketing/claw_machine_LINE_marketing?utm_source=chatgpt.com"
+							alt="文章" target=_blank>完整文章</a>
+					</div></li>
 			</ul>
 		</div>
 
 		<!-- 登入區塊 -->
 		<div class="card">
-			<h2>登入系統</h2>
-			<form action="LoginController" method="post">
-				<input type="text" name="username" placeholder="請輸入帳號" required>
-				<input type="password" name="password" placeholder="請輸入密碼" required>
-				<div class="captcha-container">
-					<input type="text" name="captcha" required placeholder="驗證碼">
-					<img src="CaptchaServlet"
-						onclick="this.src='CaptchaServlet?'+Math.random()" alt="驗證碼">
-				</div>
-				<div style="text-align: center; ">
-					<input style="font-weight:bolder;" type="submit" value="登入">
-					<input  style="background-color: gray; font-weight:bolder;" type="reset"	value="重置">
-				</div>
-				<div style="text-align: center; margin-top: 10px; font-size:12px">
-					<a href="VisitorCounterServlet?page=register.jsp">註冊帳號</a>
-				</div>
-			</form>
+		<h2>登入系統</h2>
+		    <form action="LoginController" method="post">
+		        <input type="text" name="username" placeholder="請輸入帳號" required>
+		        <input type="password" name="password" placeholder="請輸入密碼" required>
+		        <div class="captcha-container">
+		            <input type="text" name="captcha" placeholder="驗證碼">
+		            <img src="CaptchaServlet"
+		                onclick="this.src='CaptchaServlet?'+Math.random()" alt="驗證碼">
+		        </div>
+		        <div style="text-align: center;">
+		            <input style="font-weight: bolder;" type="submit" value="登入">
+		            <input style="background-color: gray; font-weight: bolder;"
+		                type="reset" value="重置">
+		        </div>
+		        <div style="text-align: center; margin-top: 10px; font-size: 12px">
+		            <a href="VisitorCounterServlet?page=register.jsp">註冊帳號</a>
+		        </div>
+		    </form>
 		</div>
 
 		<!-- YouTube 區塊 -->
 		<div class="card">
 			<h2>實戰影片</h2>
-			<iframe width="768" height="432" src="https://www.youtube.com/embed/1ieKSJGOqiQ" title="夾娃娃機台主必看!換線 換爪教學【Bobo TV】 ft.含羞草" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-			<iframe width="768" height="432" src="https://www.youtube.com/embed/g-tWbpHZd14" title="新手台主必看！2021最強娃娃機教學，ＤＩＹ超省錢｜瘋玩 NoCrazyPlayNoLife" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			<iframe width="768" height="432"
+				src="https://www.youtube.com/embed/1ieKSJGOqiQ"
+				title="夾娃娃機台主必看!換線 換爪教學【Bobo TV】 ft.含羞草" frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			<iframe width="768" height="432"
+				src="https://www.youtube.com/embed/g-tWbpHZd14"
+				title="新手台主必看！2021最強娃娃機教學，ＤＩＹ超省錢｜瘋玩 NoCrazyPlayNoLife"
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 		</div>
 	</div>
 
