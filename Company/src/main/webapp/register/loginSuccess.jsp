@@ -251,6 +251,7 @@
 </div>
 <div class="bottom">© 2025 致理科大夜資四A第二組 - 所有權利保留
 				<a href="VisitorCounterServlet?page=game/gameList.jsp" target="imain" alt="遊戲列表">
+				<!-- <a href="https://game.hullqin.cn" target="imain" alt="遊戲列表"> -->
                     <img src="http://huanggod.myddns.me:8080/Company/pic/2048_game_icon.png" alt="2048 Game Icon">
                 </a>
 </div>

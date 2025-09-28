@@ -186,6 +186,7 @@
 	    if (machines.length === 0) return;
 
 	    let machine = machines[currentIndex];
+	    window.currentMachine = machine;
 	    let { id, name, cameraUrl, imageUrl } = machine;
 
 	    document.getElementById("machineName").innerText = "目前機台: " + name;
@@ -299,6 +300,37 @@
 	    if (!locationId.trim()) return;
 	    saveLocationIdToSession(locationId);
 	}
+	
+	//此為投幣按鈕用
+	function insertCoin() {
+	    fetch("InsertCoinServlet", {
+	        method: "POST",
+	        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+	        body: "machineId=" + currentMachine.id
+	    }).then(res => res.text()).then(alert);
+	    console.log("投入10元",insertCoin);
+	}
+	
+	// 此為出貨按鈕
+	function shipment() {
+	    let productCost = prompt("請輸入該獎品成本：", "50");
+	    if (!productCost) return;
+
+	    let note = prompt("請輸入出貨說明：", "玩家成功夾取");
+	    if (note === null) note = ""; // 避免使用者按取消
+
+	    fetch("ShipmentServlet", {
+	        method: "POST",
+	        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+	        body: "machineId=" + currentMachine.id + 
+	              "&productCost=" + productCost + 
+	              "&note=" + encodeURIComponent(note)
+	    })
+	    .then(res => res.text())
+	    .then(alert);
+
+	    console.log("出貨執行，機台ID:", currentMachine.id, "成本:", productCost, "說明:", note);
+	}
     </script>
 </head>
 <body>
@@ -342,8 +374,11 @@
 		<div class="nav-buttons">
 			<button onclick="changeMachine(-1)">⬆ 上一台</button>
 			<button onclick="changeMachine(1)">⬇ 下一台</button>
+			<button onclick="insertCoin()">投入10元</button>
+    		<button onclick="shipment()">出貨</button>
+    		<a href="ExportRevenueServlet"><button>匯出營收CSV</button></a>
 		</div>
-
+		
 		<div style="margin-top: 20px;">
 			<a href="VisitorCounterServlet?page=register/addLocation.jsp">➕
 				新增場地</a> | <a href="VisitorCounterServlet?page=register/addMachine.jsp">➕
