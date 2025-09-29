@@ -22,16 +22,16 @@
             position: fixed;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
             top: 0;
             left: 0;
         }
 
         .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
+            width: 95%;
+            max-width: 770px; /* 限制在 iframe 寬度 */
+            margin: 20px auto;
+            padding: 15px;
             background-color: rgba(0, 0, 0, 0.6);
             border-radius: 12px;
             backdrop-filter: blur(10px);
@@ -40,18 +40,19 @@
 
         h2, h3 {
             color: #00ffff;
+            margin-top: 10px;
         }
 
         form {
             background-color: rgba(255, 255, 255, 0.05);
-            padding: 10px;
-            margin-bottom: 20px;
+            padding: 8px;
+            margin-bottom: 15px;
             border-radius: 8px;
             box-shadow: 0 0 8px rgba(0, 255, 255, 0.1);
         }
 
         label {
-            font-size: 14px;
+            font-size: 13px;
             display: block;
             margin-top: 5px;
             color: #ddd;
@@ -59,9 +60,9 @@
 
         input[type="text"], textarea {
             width: 100%;
-            padding: 5px;
+            padding: 4px;
             margin-top: 3px;
-            font-size: 14px;
+            font-size: 13px;
             border: 1px solid #00ffff;
             border-radius: 4px;
             background-color: rgba(255, 255, 255, 0.1);
@@ -77,9 +78,9 @@
             background-color: #00ffff;
             color: #000;
             border: none;
-            padding: 6px 12px;
-            margin-top: 10px;
-            font-size: 13px;
+            padding: 5px 10px;
+            margin-top: 8px;
+            font-size: 12px;
             border-radius: 4px;
             cursor: pointer;
         }
@@ -93,13 +94,17 @@
             border-collapse: collapse;
             font-size: 13px;
             margin-top: 10px;
+            table-layout: fixed;
+            word-wrap: break-word;
+            word-break: break-all;
         }
 
         th, td {
             border: 1px solid #555;
-            padding: 8px;
+            padding: 6px;
             text-align: left;
             background-color: rgba(255, 255, 255, 0.05);
+            vertical-align: top;
         }
 
         th {
@@ -107,9 +112,17 @@
             color: #000;
         }
 
+        /* 欄位寬度分配 */
+        th:nth-child(1), td:nth-child(1) { width: 12%; }
+        th:nth-child(2), td:nth-child(2) { width: 18%; }
+        th:nth-child(3), td:nth-child(3) { width: 30%; }
+        th:nth-child(4), td:nth-child(4) { width: 15%; }
+        th:nth-child(5), td:nth-child(5) { width: 25%; }
+
+        /* 回覆樣式 */
         .reply {
             margin-top: 5px;
-            padding: 5px;
+            padding: 4px;
             background-color: rgba(0, 255, 255, 0.05);
             border-left: 3px solid #00ffff;
             font-size: 12px;
@@ -121,6 +134,49 @@
 
         .reply small {
             color: #999;
+        }
+
+        /* 回覆表單縮小一點 */
+        td form input[type="text"] {
+            font-size: 12px;
+            padding: 3px;
+        }
+        td form textarea {
+            height: 40px;
+            font-size: 12px;
+        }
+
+        /* ========== 手機 RWD ========= */
+        @media (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead {
+                display: none; /* 隱藏標題列 */
+            }
+
+            tr {
+                margin-bottom: 12px;
+                border: 1px solid #444;
+                border-radius: 6px;
+                padding: 8px;
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+
+            td {
+                border: none;
+                padding: 5px 0;
+                font-size: 13px;
+            }
+
+            td:before {
+                content: attr(data-label);
+                font-weight: bold;
+                color: #00ffff;
+                display: block;
+                margin-bottom: 2px;
+            }
         }
     </style>
 </head>
@@ -158,11 +214,11 @@
         <% if (messages != null && !messages.isEmpty()) { %>
             <% for (ChatMessage message : messages) { %>
                 <tr>
-                    <td><%= message.getName() %></td>
-                    <td><%= message.getSubject() %></td>
-                    <td><%= message.getContent() %></td>
-                    <td><%= message.getCreatedAt() %></td>
-                    <td>
+                    <td data-label="留言者"><%= message.getName() %></td>
+                    <td data-label="主旨"><%= message.getSubject() %></td>
+                    <td data-label="內容"><%= message.getContent() %></td>
+                    <td data-label="時間"><%= message.getCreatedAt() %></td>
+                    <td data-label="回覆">
                         <% if (message.getReplies() != null) { %>
                             <% for (ChatReply reply : message.getReplies()) { %>
                                 <div class="reply">

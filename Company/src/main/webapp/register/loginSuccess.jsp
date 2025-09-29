@@ -54,12 +54,12 @@
 
         /* 粒子動畫的容器 */
         #particles-js {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* 確保粒子顯示在其他內容的後面 */
+            z-index: 0; /* 確保粒子顯示在其他內容的後面 */
         }
 
         .container {

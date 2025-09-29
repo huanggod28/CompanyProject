@@ -3,9 +3,9 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- RWD -->
 <title>智能娃娃機營運系統</title>
-<script
-	src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <style>
 * {
 	box-sizing: border-box;
@@ -28,7 +28,7 @@ body {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	z-index: -1;
+	z-index: 0;
 }
 
 .container {
@@ -40,12 +40,15 @@ body {
 	animation: fadeIn 2s ease;
 }
 
+/* RWD 卡片調整 */
 .card {
 	background: rgba(0, 255, 255, 0.05);
 	border: 1px solid rgba(0, 255, 255, 0.2);
 	border-radius: 20px;
 	padding: 30px;
-	width: 360px;
+	flex: 1 1 300px; /* RWD：最小 300px，可自動縮放 */
+	max-width: 400px;
+	width: 100%;
 	backdrop-filter: blur(10px);
 	box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
 	transition: all 0.4s ease;
@@ -76,8 +79,8 @@ input[type="text"], input[type="password"] {
 }
 
 .captcha-container {
-	display: flex; <!--
-	align-items: center; -->
+	display: flex;
+	align-items: center;
 	gap: 20px;
 }
 
@@ -96,11 +99,19 @@ input[type="submit"], input[type="reset"] {
 	padding: 10px 20px;
 	cursor: pointer;
 	margin: 10px 5px 0;
-	transition: background 0.3s ease;
+	transition: background 0.3s ease, transform 0.3s ease;
 }
 
 input[type="submit"]:hover, input[type="reset"]:hover {
+	transform: scale(1.05);
+}
+
+input[type="submit"]:hover {
 	background: #00baba;
+}
+
+input[type="reset"]:hover {
+	background: lightgray;
 }
 
 a {
@@ -112,11 +123,24 @@ a:hover {
 	text-decoration: underline;
 }
 
-iframe {
+/* YouTube RWD */
+.video-container {
+	position: relative;
 	width: 100%;
-	height: 200px;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
+	overflow: hidden;
 	border-radius: 8px;
+	margin-bottom: 20px;
+}
+
+.video-container iframe {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
 	border: none;
+	border-radius: 8px;
 }
 
 .footer {
@@ -126,31 +150,24 @@ iframe {
 	color: #aaa;
 }
 
-@
-keyframes fadeIn {from { opacity:0;
-	transform: translateY(20px);
+@keyframes fadeIn {
+	from { opacity: 0; transform: translateY(20px); }
+	to { opacity: 1; transform: translateY(0); }
 }
 
-to {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-}
-blockquote {
-	margin: 0px;
-	margin-left: 15px;
-	padding: 0px;
-}
-
-div input[type="submit"]:hover {
-	background-color: #00cccc;
-	transform: scale(1.05); /*字體放大特效*/
-}
-
-div input[type="reset"]:hover {
-	background-color: lightgray;
-	transform: scale(1.05); /*字體放大特效*/
+/* 手機版調整 */
+@media (max-width: 600px) {
+	.container {
+		padding: 40px 10px;
+		gap: 20px;
+	}
+	h2 {
+		font-size: 18px;
+	}
+	input[type="text"], input[type="password"], input[type="submit"], input[type="reset"] {
+		font-size: 14px;
+		padding: 8px;
+	}
 }
 </style>
 </head>
@@ -163,8 +180,7 @@ div input[type="reset"]:hover {
 		<div class="card">
 			<h2>最新文章</h2>
 			<ul style="padding-left: 0; list-style: none;">
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a1')">◎如何選擇熱門娃娃：吸引玩家的商品策
-						<blockquote>略</blockquote>
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a1')">◎如何選擇熱門娃娃：吸引玩家的商品策略
 				</a>
 					<div id="a1" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
@@ -174,8 +190,8 @@ div input[type="reset"]:hover {
 							alt="文章1" target=_blank>完整文章</a>
 					</div></li>
 
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a2')">◎地點選擇與利潤分析：找到高效益的黃<br>
-					<blockquote>金位置</blockquote></a>
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a2')">◎地點選擇與利潤分析：找到高效益的黃金位置
+				</a>
 					<div id="a2" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
 						本文探討了夾娃娃機店的地點選擇對業績的影響，指出即使在相對偏僻的地點，如台中西屯區的夾子園旗艦店，仍能吸引大量顧客，顯示地點選擇與經營策略的關聯性。
@@ -191,8 +207,7 @@ div input[type="reset"]:hover {
 							alt="文章" target=_blank>完整文章</a>
 					</div></li>
 
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a4')">◎娃娃機經營趨勢報告：從投資玩具到打
-						<blockquote>造品牌體驗</blockquote>
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a4')">◎娃娃機經營趨勢報告：從投資玩具到打造品牌體驗
 				</a>
 					<div id="a4" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
@@ -202,8 +217,7 @@ div input[type="reset"]:hover {
 							alt="文章" target=_blank>完整文章</a>
 					</div></li>
 
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a5')">◎營運成本控管：從機台、租金到電費的
-						<blockquote>預算分配</blockquote>
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a5')">◎營運成本控管：從機台、租金到電費的預算分配
 				</a>
 					<div id="a5" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
@@ -221,8 +235,7 @@ div input[type="reset"]:hover {
 							alt="文章" target=_blank>完整文章</a>
 					</div></li>
 
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a7')">◎娃娃機行銷術：用活動與社群打造人氣
-						<blockquote>機台</blockquote>
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a7')">◎娃娃機行銷術：用活動與社群打造人氣機台
 				</a>
 					<div id="a7" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
@@ -231,8 +244,7 @@ div input[type="reset"]:hover {
 							alt="文章" target=_blank>完整文章</a>
 					</div></li>
 
-				<li><a href="javascript:void(0);" onclick="toggleArticle('a8')">◎多機台經營技巧：如何擴張你的娃娃機
-						<blockquote>王國</blockquote>
+				<li><a href="javascript:void(0);" onclick="toggleArticle('a8')">◎多機台經營技巧：如何擴張你的娃娃機王國
 				</a>
 					<div id="a8" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
@@ -252,8 +264,7 @@ div input[type="reset"]:hover {
 					</div></li>
 
 				<li><a href="javascript:void(0);"
-					onclick="toggleArticle('a10')">◎創業案例分享：從副業到月入十萬的娃
-						<blockquote>娃機經營者故事</blockquote>
+					onclick="toggleArticle('a10')">◎創業案例分享：從副業到月入十萬的娃娃機經營者故事
 				</a>
 					<div id="a10" class="article-content"
 						style="display: none; padding: 10px 15px; margin-top: 8px; border-left: 2px solid #00ffff; color: #ccc;">
@@ -267,19 +278,17 @@ div input[type="reset"]:hover {
 
 		<!-- 登入區塊 -->
 		<div class="card">
-		<h2>登入系統</h2>
+			<h2>登入系統</h2>
 		    <form action="LoginController" method="post">
 		        <input type="text" name="username" placeholder="請輸入帳號" required>
 		        <input type="password" name="password" placeholder="請輸入密碼" required>
 		        <div class="captcha-container">
 		            <input type="text" name="captcha" placeholder="驗證碼">
-		            <img src="CaptchaServlet"
-		                onclick="this.src='CaptchaServlet?'+Math.random()" alt="驗證碼">
+		            <img src="CaptchaServlet" onclick="this.src='CaptchaServlet?'+Math.random()" alt="驗證碼">
 		        </div>
 		        <div style="text-align: center;">
 		            <input style="font-weight: bolder;" type="submit" value="登入">
-		            <input style="background-color: gray; font-weight: bolder;"
-		                type="reset" value="重置">
+		            <input style="background-color: gray; font-weight: bolder;" type="reset" value="重置">
 		        </div>
 		        <div style="text-align: center; margin-top: 10px; font-size: 12px">
 		            <a href="VisitorCounterServlet?page=register.jsp">註冊帳號</a>
@@ -290,17 +299,12 @@ div input[type="reset"]:hover {
 		<!-- YouTube 區塊 -->
 		<div class="card">
 			<h2>實戰影片</h2>
-			<iframe width="768" height="432"
-				src="https://www.youtube.com/embed/1ieKSJGOqiQ"
-				title="夾娃娃機台主必看!換線 換爪教學【Bobo TV】 ft.含羞草" frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-			<iframe width="768" height="432"
-				src="https://www.youtube.com/embed/g-tWbpHZd14"
-				title="新手台主必看！2021最強娃娃機教學，ＤＩＹ超省錢｜瘋玩 NoCrazyPlayNoLife"
-				frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			<div class="video-container">
+				<iframe src="https://www.youtube.com/embed/1ieKSJGOqiQ" allowfullscreen></iframe>
+			</div>
+			<div class="video-container">
+				<iframe src="https://www.youtube.com/embed/g-tWbpHZd14" allowfullscreen></iframe>
+			</div>
 		</div>
 	</div>
 
@@ -309,56 +313,24 @@ div input[type="reset"]:hover {
 	<script>
 		particlesJS("particles-js", {
 			particles : {
-				number : {
-					value : 80
-				},
-				color : {
-					value : "#00ffff"
-				},
-				shape : {
-					type : "circle"
-				},
-				opacity : {
-					value : 0.3
-				},
-				size : {
-					value : 3
-				},
-				line_linked : {
-					enable : true,
-					distance : 150,
-					color : "#00ffff",
-					opacity : 0.3,
-					width : 1
-				},
-				move : {
-					enable : true,
-					speed : 2
-				}
+				number : { value : 80 },
+				color : { value : "#00ffff" },
+				shape : { type : "circle" },
+				opacity : { value : 0.3 },
+				size : { value : 3 },
+				line_linked : { enable : true, distance : 150, color : "#00ffff", opacity : 0.3, width : 1 },
+				move : { enable : true, speed : 2 }
 			},
 			interactivity : {
-				events : {
-					onhover : {
-						enable : true,
-						mode : "grab"
-					}
-				},
-				modes : {
-					grab : {
-						distance : 200,
-						line_linked : {
-							opacity : 0.5
-						}
-					}
-				}
+				events : { onhover : { enable : true, mode : "grab" } },
+				modes : { grab : { distance : 200, line_linked : { opacity : 0.5 } } }
 			},
 			retina_detect : true
 		});
 		/*下拉展開*/
 		function toggleArticle(id) {
 			const content = document.getElementById(id);
-			if (content.style.display === "none"
-					|| content.style.display === "") {
+			if (content.style.display === "none" || content.style.display === "") {
 				content.style.display = "block";
 			} else {
 				content.style.display = "none";

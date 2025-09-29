@@ -132,6 +132,64 @@ body {
   width: auto; /* 等比例縮放寬度 */
   vertical-align: middle; /* 讓圖片垂直置中 */
 }
+
+/* RWD 調整 */
+@media (max-width: 768px) {
+	.navbar {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 10px 20px;
+		height: auto;
+	}
+	.logo {
+		font-size: 20px;
+	}
+	.logo img {
+		height: 50px;
+	}
+	.navbar .menu {
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-top: 10px;
+	}
+	.navbar .meni .btn{
+		width: 140px;
+		padding: 8px 10px;
+	}
+	.navbar .menu .btn .bn {
+		font-size: 16px;
+		margin-left: 5px;
+	}
+	.navbar .menu img {
+		height: 25px;
+	}
+	.navbar .bell-icon {
+		font-size: 18px;
+		margin-top: 5px;
+	}
+}
+@media (max-width: 480px) {
+	.navbar {
+		padding: 10px 10px;
+	}
+	.logo {
+		font-size: 18px;
+	}
+	.logo img {
+		height: 40px;
+	}
+	.navbar .menu .btn {
+		width: 120px; /* 小螢幕縮小按鈕寬度 */
+		padding: 6px 8px;
+	}
+	.navbar .menu .btn .bn {
+		font-size: 14px;
+		margin-left: 4px;
+	}
+	.navbar .menu img {
+		height: 20px;
+	}
+}
 </style>
 <!-- Font Awesome CDN for bell icon -->
 <link rel="stylesheet"

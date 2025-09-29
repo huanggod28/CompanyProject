@@ -22,12 +22,17 @@
             color: #00bcd4;
             overflow: hidden;
         }
+        
+        .container, .bottom {
+		    position: relative;
+		    z-index: 1; /* 蓋在粒子上方，但滑鼠事件還是會先到粒子 */
+		}
 
         #particles-js {
             position: fixed;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
         }
 
         .container {
