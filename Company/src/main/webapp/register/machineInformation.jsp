@@ -313,7 +313,7 @@
 	
 	// 此為出貨按鈕
 	function shipment() {
-	    let productCost = prompt("請輸入該獎品成本：", "50");
+	    let productCost = prompt("請輸入該獎品成本：", "10");
 	    if (!productCost) return;
 
 	    let note = prompt("請輸入出貨說明：", "玩家成功夾取");

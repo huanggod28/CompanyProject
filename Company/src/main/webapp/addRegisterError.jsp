@@ -9,6 +9,6 @@
 <body>
 <div id="mid">
 <h3>帳號重複</h3>
-<a href="register.jsp">重新註冊</a></div>/
+<a href="register.jsp">重新註冊</a></div>
 </body>
 </html>

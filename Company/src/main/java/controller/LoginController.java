@@ -21,7 +21,7 @@ import model.Register;
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     
-    // ✅ 建立 logger
+    // 建立 logger
     private static final Logger logger = Logger.getLogger(LoginController.class.getName());
 
     static {
@@ -78,13 +78,16 @@ public class LoginController extends HttpServlet {
         session.setAttribute("genger", register.getGenger());
         session.setAttribute("address", register.getAddress());
         session.setAttribute("userId", register.getId());
+        
+        // 讓其他 Servlet 能直接取得登入使用者物件
+        session.setAttribute("loginUser", register);
 
         logEvent("使用者 [" + register.getUsername() + "] 成功登入");
 
         response.sendRedirect("VisitorCounterServlet?page=register/loginSuccess.jsp");
     }
 
-    // ✅ 統一 log 方法
+    // 統一 log 方法
     private void logEvent(String message) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String now = LocalDateTime.now().format(formatter);

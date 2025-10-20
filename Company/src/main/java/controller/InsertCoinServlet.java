@@ -19,17 +19,28 @@ public class InsertCoinServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int machineId = Integer.parseInt(request.getParameter("machineId"));
 
+        // 取得登入使用者
+        model.Register loginUser = (model.Register) request.getSession().getAttribute("loginUser");
+        if (loginUser == null) {
+            response.getWriter().write("❌ 尚未登入，無法投幣");
+            return;
+        }
+
+        int userId = loginUser.getId();
+
         RevenueRecord record = dao.findByMachineId(machineId);
         if (record == null) {
             record = new RevenueRecord();
             record.setMachineId(machineId);
+            record.setUserId(userId); // 新增
             record.setTotalCoin(10);
             record.setShipmentCount(0);
-            record.setGuaranteeAmount(0); // 之後再由 machine_parameters 補上
+            record.setGuaranteeAmount(0);
             record.setProductCost(0);
             record.setTotalRevenue(0);
             dao.insert(record);
         } else {
+        	//更新現有投幣紀錄
             record.setTotalCoin(record.getTotalCoin() + 10);
             dao.update(record);
         }
