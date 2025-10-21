@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -61,6 +62,12 @@
             color: #ccc;
             line-height: 1.6;
         }
+        
+        .contact-info a {
+            font-size: 14px;
+            color: #00FFFF;
+            line-height: 1.6;
+        }
 
         .footer {
             text-align: center;
@@ -88,7 +95,11 @@
         <p><strong>地址：</strong>新北市板橋區文化路313號</p>
         <p><strong>電話：</strong>(02) 1234-5678</p>
         <p><strong>電子郵件：</strong>61110125@example.com</p>
-        <p><a href="">回饋表單填寫</a></p>
+        <p><a href="FeedbackUserServlet">回饋表單填寫</a></p>
+        <!-- 設定只有管理者才能看到 -->
+        <c:if test="${not empty sessionScope.loginUser and sessionScope.loginUser.whitelist}">
+		    <a href="FeedbackAdminServlet">管理意見回覆</a>
+		</c:if>
     </div>
 </div>
 
