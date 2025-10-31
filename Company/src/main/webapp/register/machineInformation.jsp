@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, model.Location"%>
 <%@ page import="dao.impl.LocationDaoImpl"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String Name = (String) session.getAttribute("name");
     Integer userId = (Integer) session.getAttribute("id");
@@ -374,8 +375,11 @@
 		<div class="nav-buttons">
 			<button onclick="changeMachine(-1)">⬆ 上一台</button>
 			<button onclick="changeMachine(1)">⬇ 下一台</button>
-			<button onclick="insertCoin()">投入10元</button>
-    		<button onclick="shipment()">出貨</button>
+			<!-- 設定只有管理者才能看到 -->
+	        <c:if test="${not empty sessionScope.loginUser and sessionScope.loginUser.whitelist}">
+			    <button onclick="insertCoin()">投入10元</button>
+    			<button onclick="shipment()">出貨</button>
+			</c:if>
     		<a href="ExportRevenueServlet"><button>匯出營收CSV</button></a>
 		</div>
 		
