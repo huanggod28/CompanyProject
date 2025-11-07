@@ -204,9 +204,9 @@
 	    };
 	    container.appendChild(btn);
 
-	    console.log("🔍 當前機台 ID:", id);
-	    console.log("🔗 生成的編輯連結 (按鈕實際 href):", btn.onclick.toString());
-	    console.log("🔗 按鈕將跳轉至:", "EditParametersServlet?machineId=" + id);
+	    console.log(" 當前機台 ID:", id);
+	    console.log(" 生成的編輯連結 (按鈕實際 href):", btn.onclick.toString());
+	    console.log(" 按鈕將跳轉至:", "EditParametersServlet?machineId=" + id);
 	    // 其他顯示邏輯 (圖片/影片/YouTube)
 	    let imageElement = document.getElementById("machineImage");
 	    let cameraElement = document.getElementById("camera");
@@ -262,16 +262,16 @@
 	        let currentMachine = machines[currentIndex];
 
 	        try {
-	            // ✅ 先更新後端 session
+	            //  先更新後端 session
 	            await fetch("SaveMachineServlet", {
 	                method: "POST",
 	                headers: { "Content-Type": "application/x-www-form-urlencoded" },
 	                body: new URLSearchParams({ machineId: currentMachine.id })
 	            });
 
-	            console.log("✅ 已更新 session 中的機台 ID:", currentMachine.id);
-	            console.log("🟢 切換後 currentMachine:", currentMachine);
-	            // ✅ 確定 session 更新成功後再更新畫面
+	            console.log("已更新 session 中的機台 ID:", currentMachine.id);
+	            console.log("切換後 currentMachine:", currentMachine);
+	            //  確定 session 更新成功後再更新畫面
 	            updateDisplay();
 
 	        } catch (err) {
@@ -291,7 +291,7 @@
 	        });
 
 	        if (!response.ok) throw new Error(`❌ 伺服器錯誤: ${response.status}`);
-	        await loadMachines(locationId); // ✅ 等 session 更新完成再載入機台
+	        await loadMachines(locationId); //  等 session 更新完成再載入機台
 	    } catch (error) {
 	        console.error("❌ session 更新失敗:", error);
 	    }
