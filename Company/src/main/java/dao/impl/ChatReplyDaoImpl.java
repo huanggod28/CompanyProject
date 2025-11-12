@@ -1,25 +1,23 @@
 package dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import dao.ChatReplyDao;
-import dao.DbConnection;
 import model.ChatReply;
+import util.DbConnection;
 
 public class ChatReplyDaoImpl implements ChatReplyDao {
-    private static Connection conn = DbConnection.getDB(); // 取得資料庫連線
 
     @Override
     public List<ChatReply> getRepliesByMessageId(int messageId) throws SQLException {
         List<ChatReply> replies = new ArrayList<>();
         String sql = "SELECT * FROM chat_replies WHERE message_id = ? ORDER BY created_at ASC";
 
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DbConnection.getDB();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setInt(1, messageId);
             ResultSet rs = stmt.executeQuery();
 
@@ -40,8 +38,10 @@ public class ChatReplyDaoImpl implements ChatReplyDao {
     @Override
     public void addReply(ChatReply reply) throws SQLException {
         String sql = "INSERT INTO chat_replies (message_id, user_id, name, content) VALUES (?, ?, ?, ?)";
-        
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        try (Connection conn = DbConnection.getDB();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
             stmt.setInt(1, reply.getMessageId());
             stmt.setInt(2, reply.getUserId());
             stmt.setString(3, reply.getName());

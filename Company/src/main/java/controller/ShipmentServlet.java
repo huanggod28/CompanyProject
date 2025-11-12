@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DbConnection;
 import dao.impl.MachineParametersDaoImpl;
 import dao.impl.RevenueRecordDaoImpl;
 import dao.impl.ShipmentRecordDaoImpl;
 import model.RevenueRecord;
 import model.ShipmentRecord;
+import util.DbConnection;
 
 //此為模擬出貨按鈕用
 

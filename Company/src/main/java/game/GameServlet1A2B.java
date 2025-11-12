@@ -1,4 +1,4 @@
-package util;
+package game;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

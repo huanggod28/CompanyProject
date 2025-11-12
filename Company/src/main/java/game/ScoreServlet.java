@@ -1,4 +1,4 @@
-package util;
+package game;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import dao.DbConnection;
 import model.Leaderboard;
+import util.DbConnection;
 
 @WebServlet("/ScoreServlet")
 public class ScoreServlet extends HttpServlet {
