@@ -30,7 +30,8 @@ public class VisitorCounterServlet extends HttpServlet {
         		"register/profile.jsp","register",
         		"game/2048game/gameIndex.jsp","game/2048game/game.jsp","game/2048game/2048leaderboard.jsp",
         		"game/chineseTypingGame/gameIndex.jsp","game/chineseTypingGame/game.jsp","game/gameList","game/gameError",
-        		"game/1A2Bgame/game1A2B.jsp","game/777game/777gameRules.jsp","game/777game/game777"};
+        		"game/1A2Bgame/game1A2B.jsp","game/777game/777gameRules.jsp","game/777game/game777",
+        		"game/tictactoe/gameIndex.jsp","game/tictactoe/gameTicTacToe.jsp"};
         boolean needsLogin = false;
         for (String page : protectedPages) {
             if (targetPage.equals(page)) {
