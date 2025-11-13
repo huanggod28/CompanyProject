@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="dao.impl.PollOptionDAOImpl, model.PollOption, java.util.List" %>
+<%@ page import="model.Poll, dao.impl.PollOptionDAOImpl, model.PollOption, java.util.*" %>
 <%
-    int pollId = Integer.parseInt(request.getParameter("pollId"));
-    PollOptionDAOImpl optionDAO = new PollOptionDAOImpl();
-    List<PollOption> options = optionDAO.getOptionsByPollId(pollId);
+    Poll poll = (Poll) request.getAttribute("poll");
+    if (poll == null && request.getParameter("pollId") != null) {
+        int pollId = Integer.parseInt(request.getParameter("pollId"));
+        poll = new dao.impl.PollDAOImpl().getPollById(pollId);
+    }
+    dao.impl.PollOptionDAOImpl optionDAO = new dao.impl.PollOptionDAOImpl();
+    List<PollOption> options = optionDAO.getOptionsByPollId(poll.getId());
 %>
 <!DOCTYPE html>
 <html>

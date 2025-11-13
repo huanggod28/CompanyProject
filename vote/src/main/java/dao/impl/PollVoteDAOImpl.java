@@ -45,4 +45,19 @@ public class PollVoteDAOImpl implements PollVoteDAO {
         }
         return false;
     }
+    
+    @Override
+    public boolean hasTokenVoted(int pollId, String token) {
+        String sql = "SELECT 1 FROM poll_votes WHERE poll_id = ? AND voter_token = ?";
+        try (Connection conn = DbConnection.getDB();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, pollId);
+            ps.setString(2, token);
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

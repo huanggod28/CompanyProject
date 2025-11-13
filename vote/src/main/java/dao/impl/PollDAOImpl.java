@@ -192,4 +192,16 @@ public class PollDAOImpl implements PollDAO {
 	        e.printStackTrace();
 	    }
 	}
+	
+	@Override
+	public void incrementTotalVotes(int pollId) {
+	    String sql = "UPDATE polls SET total_votes = total_votes + 1 WHERE id = ?";
+	    try (Connection conn = DbConnection.getDB();
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+	        ps.setInt(1, pollId);
+	        ps.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
 }

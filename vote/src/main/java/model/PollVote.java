@@ -8,6 +8,7 @@ public class PollVote {
 	private Integer userId; // 可為 null
 	private int optionId;
 	private Date votedAt;
+	private String voterToken;
 
 	// getters & setters
 	public int getId() {
@@ -49,4 +50,14 @@ public class PollVote {
 	public void setVotedAt(Date votedAt) {
 		this.votedAt = votedAt;
 	}
+
+	public String getVoterToken() {
+		return voterToken;
+	}
+
+	public void setVoterToken(String voterToken) {
+		this.voterToken = voterToken;
+	}
+	
+	
 }

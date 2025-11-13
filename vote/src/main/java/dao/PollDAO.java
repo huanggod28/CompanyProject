@@ -11,4 +11,5 @@ public interface PollDAO {
     List<Poll> getPollsByUserId(int userId);
     List<Poll> getAllPollsByUser(int userId);
 	void updateTotalVotes(Poll poll);
+	public void incrementTotalVotes(int pollId);
 }
