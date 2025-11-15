@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>智能娃娃機營運監控系統</title>
-    <link rel="icon" href="http://huanggod.myddns.me:8080/Company/pic/icon.ico" type="image/x-icon">
+    <link rel="icon" href="https://web.huanggod.myddns.me/Company/pic/icon.ico" type="image/x-icon">
     <!-- 引入 particles.js -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
@@ -212,7 +212,7 @@
         <tr>
             <td colspan="2" class="header">
                 <a href="VisitorCounterServlet?page=register/loginSuccess.jsp" target="_top">
-                    <img src="http://huanggod.myddns.me:8080/Company/pic/logo_白色.png" alt="Logo">
+                    <img src="https://web.huanggod.myddns.me/Company/pic/logo_白色.png" alt="Logo">
                 </a>
             </td>
         </tr>
@@ -252,7 +252,7 @@
 <div class="bottom">© 2025 致理科大夜資四A第二組 - 所有權利保留
 				<a href="VisitorCounterServlet?page=game/gameList.jsp" target="imain" alt="遊戲列表">
 				<!-- <a href="https://game.hullqin.cn" target="imain" alt="遊戲列表"> -->
-                    <img src="http://huanggod.myddns.me:8080/Company/pic/2048_game_icon.png" alt="2048 Game Icon">
+                    <img src="https://web.huanggod.myddns.me/Company/pic/2048_game_icon.png" alt="2048 Game Icon">
                 </a>
 </div>
 <script>

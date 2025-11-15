@@ -125,35 +125,47 @@ List<Poll> polls = (List<Poll>) request.getAttribute("polls");
 
     /* ----------------- RWD ----------------- */
     @media screen and (max-width: 768px) {
-        table, th, td {
-            display: block;
-            width: 90%;
-            margin: 10px auto;
-        }
 
-        th {
-            display: none;
-        }
-
-        td {
-            text-align: right;
-            padding-left: 50%;
-            position: relative;
-        }
-
-        td::before {
-            content: attr(data-label);
-            position: absolute;
-            left: 15px;
-            font-weight: bold;
-            text-align: left;
-        }
-
-        .topbar {
-            flex-direction: column;
-            align-items: flex-start;
-        }
+    table {
+        border: none;
+        box-shadow: none;
+        background: transparent;
     }
+
+    tr {
+        display: block;
+        background: rgba(255,255,255,0.85);
+        margin: 15px auto;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        width: 90%;
+        border-left: 4px solid #89f7fe; /* 淡色強調線，更有設計感 */
+    }
+
+    th {
+        display: none;
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #555;
+    }
+
+}
+
 </style>
 </head>
 <body>

@@ -20,7 +20,7 @@
 </head>
 <body>
 <div>
-<img src="http://huanggod.myddns.me:8080/Company/pic/Err.png" alt="遊戲開發中">
+<img src="https://web.huanggod.myddns.me/Company/pic/Err.png" alt="遊戲開發中">
 </div>
 </body>
 </html>
