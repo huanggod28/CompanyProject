@@ -73,9 +73,28 @@ public class VoteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         int optionId = Integer.parseInt(request.getParameter("optionId"));
         int pollId = Integer.parseInt(request.getParameter("pollId"));
 
+        // 取得投票主題
+        Poll poll = pollDAO.getPollById(pollId);
+        if (poll == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "投票不存在");
+            return;
+        }
+
+        // 檢查是否截止
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        boolean isClosed = poll.getEndTime() != null && now.after(poll.getEndTime());
+
+        if (isClosed) {
+            // 已截止 → 直接導向結果頁
+            response.sendRedirect("poll_result.jsp?pollId=" + pollId);
+            return;
+        }
+
+        // 取得使用者或匿名 token
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         Integer userId = (user != null) ? user.getId() : null;
@@ -95,11 +114,12 @@ public class VoteServlet extends HttpServlet {
 
             voteDAO.addVote(vote);
             optionDAO.updateVoteCount(optionId);
-            pollDAO.incrementTotalVotes(pollId); //更新總投票數
+            pollDAO.incrementTotalVotes(pollId);
         }
 
         response.sendRedirect("poll_result.jsp?pollId=" + pollId);
     }
+
 
     /** 若不存在 voterToken 則建立 Cookie */
     private String getOrCreateVoterToken(HttpServletRequest request, HttpServletResponse response) {
