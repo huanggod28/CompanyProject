@@ -14,7 +14,13 @@
             height: 100%;
             background: linear-gradient(to right, #0a0a0a, #1a1a1a);
             color: #ffffff;
+            overflow: auto;  /* 讓頁面可以滾動 */
         }
+        
+        /* 隱藏 Chrome / Edge / Safari scrollbar */
+		body::-webkit-scrollbar {
+		    display: none;
+		}
 
         #particles-js {
             position: fixed;

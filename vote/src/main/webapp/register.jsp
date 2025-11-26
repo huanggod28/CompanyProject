@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>註冊使用者</title>
+<link rel="icon" href="https://web.huanggod.myddns.me/vote/pic/voteicon.png" type="image/x-icon">
 <style>
     /* ----------------- 背景動畫 ----------------- */
     body {

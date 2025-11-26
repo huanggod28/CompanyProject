@@ -41,6 +41,17 @@
                 color: #00FFFF;
             }
         }
+        
+        /* 全頁無 Scrollbar 並維持畫面正常 */
+		html, body {
+		    height: 100%;
+		    overflow: auto;  /* 讓頁面可以滾動 */
+		}
+		
+		/* 隱藏 Chrome / Edge / Safari scrollbar */
+		body::-webkit-scrollbar {
+		    display: none;
+		}
 
         body {
         	height:948px;

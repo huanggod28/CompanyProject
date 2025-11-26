@@ -10,13 +10,15 @@ import util.DbConnection;
 
 public class RevenueRecordDaoImpl implements RevenueRecordDao {
 
+	// ---------- INSERT ----------
     @Override
     public void insert(RevenueRecord record) {
-        String sql = "INSERT INTO revenue_record (machine_id, user_id, total_coin, guarantee_amount, product_cost, total_revenue, shipment_count, note) "
+        String sql = "INSERT INTO revenue_record "
+                   + "(machine_id, user_id, total_coin, guarantee_amount, product_cost, total_revenue, shipment_count, note) "
                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (
-            Connection conn = DbConnection.getDB();   //每次方法都從連線池取得
+            Connection conn = DbConnection.getDB();
             PreparedStatement ps = conn.prepareStatement(sql)
         ) {
             ps.setInt(1, record.getMachineId());
@@ -33,6 +35,7 @@ public class RevenueRecordDaoImpl implements RevenueRecordDao {
         }
     }
 
+    // ---------- UPDATE ----------
     @Override
     public void update(RevenueRecord record) {
         String sql = "UPDATE revenue_record SET total_coin=?, product_cost=?, total_revenue=?, shipment_count=? WHERE machine_id=?";
@@ -51,30 +54,27 @@ public class RevenueRecordDaoImpl implements RevenueRecordDao {
         }
     }
 
+    // ⭐ 共同 JOIN SQL
+    private static final String BASE_JOIN_SQL =
+        "SELECT r.*, m.name AS machine_name, l.name AS location_name, l.address AS location_address "
+      + "FROM revenue_record r "
+      + "JOIN machines m ON r.machine_id = m.id "
+      + "JOIN locations l ON m.location_id = l.id ";
+
+    // ---------- findByMachineId ----------
     @Override
     public RevenueRecord findByMachineId(int machineId) {
-        String sql = "SELECT * FROM revenue_record WHERE machine_id=?";
+        String sql = BASE_JOIN_SQL + "WHERE r.machine_id=?";
+
         try (
             Connection conn = DbConnection.getDB();
             PreparedStatement ps = conn.prepareStatement(sql)
         ) {
             ps.setInt(1, machineId);
             ResultSet rs = ps.executeQuery();
+
             if (rs.next()) {
-                RevenueRecord record = new RevenueRecord();
-                record.setId(rs.getInt("id"));
-                record.setMachineId(rs.getInt("machine_id"));
-                record.setUserId(rs.getInt("user_id"));
-                record.setTotalCoin(rs.getInt("total_coin"));
-                record.setGuaranteeAmount(rs.getInt("guarantee_amount"));
-                record.setProductCost(rs.getDouble("product_cost"));
-                record.setTotalRevenue(rs.getDouble("total_revenue"));
-                record.setShipmentCount(rs.getInt("shipment_count"));
-                record.setNetProfit(rs.getDouble("net_profit"));
-                record.setGrossMargin(rs.getDouble("gross_margin"));
-                record.setLastUpdate(rs.getTimestamp("last_update"));
-                record.setNote(rs.getString("note"));
-                return record;
+                return mapRecord(rs);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -82,31 +82,19 @@ public class RevenueRecordDaoImpl implements RevenueRecordDao {
         return null;
     }
 
+    // ---------- findAll ----------
     @Override
     public List<RevenueRecord> findAll() {
         List<RevenueRecord> list = new ArrayList<>();
-        String sql = "SELECT * FROM revenue_record";
+        String sql = BASE_JOIN_SQL;
 
         try (
             Connection conn = DbConnection.getDB();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery()
         ) {
             while (rs.next()) {
-                RevenueRecord record = new RevenueRecord();
-                record.setId(rs.getInt("id"));
-                record.setMachineId(rs.getInt("machine_id"));
-                record.setUserId(rs.getInt("user_id"));
-                record.setTotalCoin(rs.getInt("total_coin"));
-                record.setGuaranteeAmount(rs.getInt("guarantee_amount"));
-                record.setProductCost(rs.getDouble("product_cost"));
-                record.setTotalRevenue(rs.getDouble("total_revenue"));
-                record.setShipmentCount(rs.getInt("shipment_count"));
-                record.setNetProfit(rs.getDouble("net_profit"));
-                record.setGrossMargin(rs.getDouble("gross_margin"));
-                record.setLastUpdate(rs.getTimestamp("last_update"));
-                record.setNote(rs.getString("note"));
-                list.add(record);
+                list.add(mapRecord(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -114,10 +102,12 @@ public class RevenueRecordDaoImpl implements RevenueRecordDao {
         return list;
     }
 
+    // ---------- findByUserId ----------
     @Override
     public List<RevenueRecord> findByUserId(int userId) {
         List<RevenueRecord> list = new ArrayList<>();
-        String sql = "SELECT * FROM revenue_record WHERE user_id = ? ORDER BY last_update DESC";
+
+        String sql = BASE_JOIN_SQL + "WHERE r.user_id=? ORDER BY r.last_update DESC";
 
         try (
             Connection conn = DbConnection.getDB();
@@ -125,26 +115,37 @@ public class RevenueRecordDaoImpl implements RevenueRecordDao {
         ) {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
-
             while (rs.next()) {
-                RevenueRecord r = new RevenueRecord();
-                r.setId(rs.getInt("id"));
-                r.setMachineId(rs.getInt("machine_id"));
-                r.setUserId(rs.getInt("user_id"));
-                r.setTotalCoin(rs.getInt("total_coin"));
-                r.setGuaranteeAmount(rs.getInt("guarantee_amount"));
-                r.setProductCost(rs.getDouble("product_cost"));
-                r.setTotalRevenue(rs.getDouble("total_revenue"));
-                r.setShipmentCount(rs.getInt("shipment_count"));
-                r.setNetProfit(rs.getDouble("net_profit"));
-                r.setGrossMargin(rs.getDouble("gross_margin"));
-                r.setLastUpdate(rs.getTimestamp("last_update"));
-                r.setNote(rs.getString("note"));
-                list.add(r);
+                list.add(mapRecord(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
+    }
+
+    // ⭐ 封裝 ResultSet → RevenueRecord
+    private RevenueRecord mapRecord(ResultSet rs) throws SQLException {
+        RevenueRecord r = new RevenueRecord();
+
+        r.setId(rs.getInt("id"));
+        r.setMachineId(rs.getInt("machine_id"));
+        r.setUserId(rs.getInt("user_id"));
+        r.setTotalCoin(rs.getInt("total_coin"));
+        r.setGuaranteeAmount(rs.getInt("guarantee_amount"));
+        r.setProductCost(rs.getDouble("product_cost"));
+        r.setTotalRevenue(rs.getDouble("total_revenue"));
+        r.setShipmentCount(rs.getInt("shipment_count"));
+        r.setNetProfit(rs.getDouble("net_profit"));
+        r.setGrossMargin(rs.getDouble("gross_margin"));
+        r.setLastUpdate(rs.getTimestamp("last_update"));
+        r.setNote(rs.getString("note"));
+
+        // ⭐ 新增欄位填入
+        r.setMachineName(rs.getString("machine_name"));
+        r.setLocationName(rs.getString("location_name"));
+        r.setLocationAddress(rs.getString("location_address"));
+
+        return r;
     }
 }

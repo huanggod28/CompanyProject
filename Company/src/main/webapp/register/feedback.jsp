@@ -21,7 +21,12 @@ html, body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: radial-gradient(circle at top, #0a0f1a, #000);
     color: #fff;
-    overflow-x: hidden;
+    overflow: auto;  /* 讓頁面可以滾動 */
+}
+
+/* 隱藏 Chrome / Edge / Safari scrollbar */
+body::-webkit-scrollbar {
+	display: none;
 }
 
 /* 背景粒子層 */

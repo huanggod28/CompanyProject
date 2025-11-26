@@ -10,6 +10,17 @@
     <title>留言板</title>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
+    	/* 全頁無 Scrollbar 並維持畫面正常 */
+		html, body {
+		    height: 100%;
+		    overflow: auto;  /* 讓頁面可以滾動 */
+		}
+		
+		/* 隱藏 Chrome / Edge / Safari scrollbar */
+		body::-webkit-scrollbar {
+		    display: none;
+		}
+    
         body {
             margin: 0;
             padding: 0;

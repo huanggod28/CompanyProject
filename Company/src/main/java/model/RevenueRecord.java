@@ -15,6 +15,11 @@ public class RevenueRecord {
     private double grossMargin;     // 毛利率 %
     private String note;              // 出貨說明
     private Timestamp lastUpdate;
+    private String machineName;     // 機台名稱 新增
+    private String locationName;    //場地名稱 新增
+    private String locationAddress;   //場地地址 新增
+
+    
 
     // Getters & Setters
     public int getId() { return id; }
@@ -53,5 +58,12 @@ public class RevenueRecord {
     public String getNote() {return note;}
     public void setNote(String note) {this.note = note;}
     
-    
+    public String getMachineName() { return machineName; }
+    public void setMachineName(String machineName) { this.machineName = machineName; }
+
+    public String getLocationName() { return locationName; }
+    public void setLocationName(String locationName) { this.locationName = locationName; }
+
+    public String getLocationAddress() { return locationAddress; }
+    public void setLocationAddress(String locationAddress) { this.locationAddress = locationAddress; }
 }

@@ -16,8 +16,13 @@ body, html {
 	padding: 0;
 	font-family: 'Segoe UI', sans-serif;
 	height: 100%;
-	overflow-x: hidden;
+	overflow: auto;  /* 讓頁面可以滾動 */
 	color: #fff;
+}
+
+/* 隱藏 Chrome / Edge / Safari scrollbar */
+body::-webkit-scrollbar {
+	display: none;
 }
 
 body {

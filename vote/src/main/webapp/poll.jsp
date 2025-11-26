@@ -39,7 +39,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>投票 - <%=poll.getTitle()%></title>
-
+<link rel="icon" href="https://web.huanggod.myddns.me/vote/pic/voteicon.png" type="image/x-icon">
 <style>
 
 /* 全頁無 Scrollbar 並維持畫面正常 */

@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>登入</title>
+<title>投票管理系統</title>
+<link rel="icon" href="https://web.huanggod.myddns.me/vote/pic/voteicon.png" type="image/x-icon">
 <style>
     /* ----------------- 背景動畫 ----------------- */
     body {
@@ -30,15 +31,28 @@
         100% {background-position: 0% 50%;}
     }
 
-    /* ----------------- 標題 ----------------- */
-    h1 {
-        margin-bottom: 20px;
-        font-size: 2.2em;
-        color: #444;
-        text-align: center;
+    /* ----------------- Logo + 標題容器 ----------------- */
+    .title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
         opacity: 0;
         transform: translateY(-20px);
         animation: fadeIn 1s forwards;
+    }
+
+    /* ----------------- Logo 大小 ----------------- */
+    .logo {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
+
+    /* ----------------- 標題 ----------------- */
+    h1 {
+        margin: 0;
+        font-size: 2.2em;
+        color: #444;
     }
 
     /* ----------------- 表單 ----------------- */
@@ -52,7 +66,7 @@
         width: 300px;
         text-align: center;
         animation: fadeIn 1s forwards;
-        animation-delay: 0.5s;
+        animation-delay: 0.4s;
         opacity: 0;
         transform: translateY(-20px);
     }
@@ -107,7 +121,7 @@
         margin-top: 10px;
     }
 
-    /* ----------------- 滑入動畫 ----------------- */
+    /* ----------------- 動畫 ----------------- */
     @keyframes fadeIn {
         to {
             opacity: 1;
@@ -120,6 +134,10 @@
         h1 {
             font-size: 1.8em;
         }
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
         form {
             width: 90%;
             padding: 20px;
@@ -127,16 +145,25 @@
     }
 </style>
 </head>
+
 <body>
-    <h1>投票管理系統</h1>
+
+    <!-- ⭐ 新增：Logo 與標題在一起 -->
+    <div class="title-wrap">
+        <img class="logo" src="https://web.huanggod.myddns.me/vote/pic/voteicon.png" alt="Logo">
+        <h1>投票管理系統</h1>
+    </div>
+
     <form method="post" action="LoginServlet">
         <input type="text" name="username" placeholder="帳號" required>
         <input type="password" name="password" placeholder="密碼" required>
         <button type="submit">登入</button>
         <a href="register.jsp">沒有帳號？註冊</a>
+
         <c:if test="${not empty error}">
             <p class="error">${error}</p>
         </c:if>
     </form>
+
 </body>
 </html>

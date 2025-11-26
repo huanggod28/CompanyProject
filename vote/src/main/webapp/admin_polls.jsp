@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>管理員投票清單</title>
+    <link rel="icon" href="https://web.huanggod.myddns.me/vote/pic/voteicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* ----------------- 背景動畫 ----------------- */
